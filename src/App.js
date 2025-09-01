@@ -25,7 +25,7 @@ const Portfolio = () => {
       tech: ["Swift", "Core ML", "Speech Framework", "CloudKit"],
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
       github: "#",
-      demo: "https://www.cnn.com"
+      demo: "#"
     },
     {
       id: 3,
