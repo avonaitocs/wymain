@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import { ChevronRight, Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -14,8 +14,8 @@ const Portfolio = () => {
       description: "Modern web interface for AI conversation with real-time responses and context awareness",
       tech: ["React", "Node.js", "OpenAI API", "WebSockets"],
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     },
     {
       id: 2,
@@ -24,8 +24,8 @@ const Portfolio = () => {
       description: "Native iOS app with voice recognition and intelligent task automation",
       tech: ["Swift", "Core ML", "Speech Framework", "CloudKit"],
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      ggithub: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     },
     {
       id: 3,
@@ -34,8 +34,8 @@ const Portfolio = () => {
       description: "Automated bot that processes large datasets and generates insights using machine learning",
       tech: ["Python", "Pandas", "Scikit-learn", "Discord.py"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     },
     {
       id: 4,
@@ -44,8 +44,8 @@ const Portfolio = () => {
       description: "macOS application with AI-powered file organization and workflow automation",
       tech: ["Swift", "AppKit", "Create ML", "Automator"],
       image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     },
     {
       id: 5,
@@ -54,8 +54,8 @@ const Portfolio = () => {
       description: "Python framework for managing machine learning pipelines with automated model training",
       tech: ["Python", "TensorFlow", "FastAPI", "Docker"],
       image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     },
     {
       id: 6,
@@ -64,8 +64,8 @@ const Portfolio = () => {
       description: "E-commerce platform with AI recommendations and intelligent search functionality",
       tech: ["Next.js", "TailwindCSS", "Python", "PostgreSQL"],
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "javascript:void(0)",
-      demo: "javascript:void(0)"
+      github: "#",
+      demo: "#"
     }
   ];
 
@@ -114,7 +114,7 @@ const Portfolio = () => {
                 AI Developer
               </h1>
               <p className={`text-xl md:text-2xl text-gray-300 mb-8 transition-all duration-1000 delay-300 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                Intelligent solutions across platforms
+                Crafting intelligent solutions across platforms
               </p>
               <div className={`flex flex-wrap justify-center gap-4 text-sm md:text-base transition-all duration-1000 delay-500 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <span className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">Web Development</span>
@@ -234,14 +234,14 @@ const Portfolio = () => {
           
           <div className="flex justify-center gap-6 mb-8">
             <a
-              href="mailto:hello@yourdomain.com"
+              href="mailto:your.email@example.com"
               className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25"
             >
               <Mail size={20} />
               Get In Touch
             </a>
             <a
-              href="#"
+              href="https://linkedin.com"
               className="flex items-center gap-2 px-8 py-4 border border-gray-700 rounded-full hover:border-gray-500 transition-all duration-300 hover:scale-105 bg-gray-800/50 backdrop-blur-sm"
             >
               <Linkedin size={20} />
