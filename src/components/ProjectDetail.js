@@ -8,8 +8,25 @@ const ProjectDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const project = projects.find(p => p.slug === projectSlug);
-  
-  // If project not found, redirect to home
+
+  // All hooks must be called before any conditional returns
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (project && project.images && project.images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prev) => 
+          prev === project.images.length - 1 ? 0 : prev + 1
+        );
+      }, 5000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [project]);
+
+  // If project not found, redirect to home (after all hooks)
   if (!project) {
     return <Navigate to="/" replace />;
   }
@@ -29,22 +46,6 @@ const ProjectDetail = () => {
   const relatedProjects = projects
     .filter(p => p.category === project.category && p.id !== project.id)
     .slice(0, 3);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    if (project.images && project.images.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => 
-          prev === project.images.length - 1 ? 0 : prev + 1
-        );
-      }, 5000);
-      
-      return () => clearInterval(interval);
-    }
-  }, [project.images]);
 
   return (
     <div className="min-h-screen">
