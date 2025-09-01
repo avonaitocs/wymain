@@ -15,7 +15,7 @@ const Portfolio = () => {
       tech: ["React", "Node.js", "OpenAI API", "WebSockets"],
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
       github: "#",
-      demo: "https://code.visualstudio.com/"
+      demo: a href="https://code.visualstudio.com/"
     },
     {
       id: 2,
