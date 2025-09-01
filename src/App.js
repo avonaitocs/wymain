@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import { Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -14,8 +14,8 @@ const Portfolio = () => {
       description: "Modern web interface for AI conversation with real-time responses and context awareness",
       tech: ["React", "Node.js", "OpenAI API", "WebSockets"],
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      github: "javascript:void(0)",
+      demo: "javascript:void(0)"
     },
     {
       id: 2,
@@ -24,8 +24,8 @@ const Portfolio = () => {
       description: "Native iOS app with voice recognition and intelligent task automation",
       tech: ["Swift", "Core ML", "Speech Framework", "CloudKit"],
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      ggithub: "javascript:void(0)",
+      demo: "javascript:void(0)"
     },
     {
       id: 3,
@@ -34,8 +34,8 @@ const Portfolio = () => {
       description: "Automated bot that processes large datasets and generates insights using machine learning",
       tech: ["Python", "Pandas", "Scikit-learn", "Discord.py"],
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      github: "javascript:void(0)",
+      demo: "javascript:void(0)"
     },
     {
       id: 4,
@@ -44,8 +44,8 @@ const Portfolio = () => {
       description: "macOS application with AI-powered file organization and workflow automation",
       tech: ["Swift", "AppKit", "Create ML", "Automator"],
       image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      github: "javascript:void(0)",
+      demo: "javascript:void(0)"
     },
     {
       id: 5,
@@ -54,8 +54,8 @@ const Portfolio = () => {
       description: "Python framework for managing machine learning pipelines with automated model training",
       tech: ["Python", "TensorFlow", "FastAPI", "Docker"],
       image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      github: "javascript:void(0)",
+      demo: "javascript:void(0)"
     },
     {
       id: 6,
@@ -64,8 +64,8 @@ const Portfolio = () => {
       description: "E-commerce platform with AI recommendations and intelligent search functionality",
       tech: ["Next.js", "TailwindCSS", "Python", "PostgreSQL"],
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      github: "#",
-      demo: "#"
+      github: "javascript:void(0)",
+      demo: "javascript:void(0)"
     }
   ];
 
