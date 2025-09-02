@@ -156,6 +156,6 @@ export const projects = [
     { id: 'websites', label: 'Websites', icon: 'Monitor' },
     { id: 'ios', label: 'iOS Apps', icon: 'Smartphone' },
     { id: 'macos', label: 'macOS Apps', icon: 'Monitor' },
-    { id: 'python', label: 'Python', icon: 'Code' },
+    { id: 'fun', label: 'Fun Stuff', icon: 'Code' },
     { id: 'bots', label: 'Bots', icon: 'Bot' }
   ];
