@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import ProjectDetail from './components/ProjectDetail';
+import AdminPanel from './components/AdminPanel';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </Layout>
     </Router>
