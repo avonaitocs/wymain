@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lock, Plus, Copy, CheckCircle, Eye, Code } from 'lucide-react';
+import { Lock, Plus, Copy, CheckCircle, Code } from 'lucide-react';
 
 const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
