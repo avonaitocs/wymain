@@ -48,7 +48,7 @@ const Home = () => {
           <div className="text-center mb-16">
             <div className="animate-on-scroll" id="hero-title">
               <h1 className={`text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                WYMaiN
+                WYMAiN
               </h1>
               <p className={`text-xl md:text-2xl text-gray-300 mb-8 transition-all duration-1000 delay-300 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 Crafting intelligent solutions across platforms
