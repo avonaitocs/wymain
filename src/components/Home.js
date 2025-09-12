@@ -187,7 +187,7 @@ const Home = () => {
           
           <div className="flex justify-center gap-6 mb-8">
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:mgwyman@gmail.com"
               className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25"
             >
               <Mail size={20} />
