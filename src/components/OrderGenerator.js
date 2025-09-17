@@ -833,6 +833,171 @@ const OrderGenerator = () => {
           </p>
         </div>
       </div>
+
+      {/* Prompt Evolution Section */}
+      <div className="container mx-auto px-6 py-20 border-t border-gray-800">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+              Prompt Evolution
+            </span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Key prompts and iterative thought process that shaped this project
+          </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* Initial Vision */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-green-400 text-xs">💡</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-green-400 mb-2">Initial Vision</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Create a project for this website that should have the same theme. The project will be an order generator for a retail store. The user can upload a catalog and generate an order based on certain parameters - total dollar value, price range for products."
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Start with core functionality - file upload, parameter inputs, order algorithm
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature Enhancement */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-blue-400 text-xs">⚡</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">Feature Enhancement</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Add the option to download the file as a PDF or an Excel spreadsheet"
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Enhance value proposition with professional export options
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Integration Challenge */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-purple-400 text-xs">🔗</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-purple-400 mb-2">Integration Strategy</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "I now need to add a link to my homepage, guide me through this one step at a time."
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Step-by-step approach to avoid overwhelm, systematic integration
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Problem Solving */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-orange-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-orange-400 text-xs">🔧</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-orange-400 mb-2">Problem Solving</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  Multiple deployment issues: "Netlify deploy errored with module not found", "Failed to compile with linting error", "Still get a 404 error"
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Methodical debugging - dependencies, linting, routing configuration
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Security & UX */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-pink-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-pink-400 text-xs">🛡️</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-pink-400 mb-2">Security & Demo Mode</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Can we make it also upload a PDF. This site is for demo purposes only so don't allow a user to upload a file, give a message saying that it's for demo purposes"
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Balance functionality showcase with portfolio security considerations
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* User Experience */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-cyan-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-cyan-400 text-xs">✨</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-cyan-400 mb-2">User Experience</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Can we get it to generate a sample order that could be viewed online by the user" → "Make the page automatically scroll down to the order when 'generate order' is clicked"
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Eliminate friction, instant gratification, smooth user flow
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Documentation */}
+          <div className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/30">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-yellow-500/20 rounded-full flex items-center justify-center mt-1">
+                <span className="text-yellow-400 text-xs">📚</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-yellow-400 mb-2">Documentation</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Make an outline summarizing the steps I took to generate this demo page" → "Integrate these steps on the order generator page"
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Thought Process:</strong> Transform process into portfolio value, showcase methodology
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Key Insights */}
+        <div className="mt-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl p-8 border border-blue-500/20">
+          <h3 className="text-xl font-bold mb-4 text-center">Key Development Insights</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 className="font-semibold text-blue-400 mb-2">Iterative Approach</h4>
+              <p className="text-gray-300">Started with MVP, then enhanced based on real needs and constraints discovered during implementation.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-purple-400 mb-2">Problem-First Thinking</h4>
+              <p className="text-gray-300">Each prompt addressed a specific challenge: functionality, integration, deployment, security, UX.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-green-400 mb-2">Step-by-Step Guidance</h4>
+              <p className="text-gray-300">Requested systematic help to avoid overwhelm and ensure proper integration with existing codebase.</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-orange-400 mb-2">Portfolio-Minded</h4>
+              <p className="text-gray-300">Balanced functionality demonstration with security considerations for public deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
