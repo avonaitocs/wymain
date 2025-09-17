@@ -51,7 +51,7 @@ const Home = () => {
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     WYMA
   </span>
-  <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">i</span>
+  <span className="text-red-500">i</span>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     N
   </span>
