@@ -47,11 +47,11 @@ const Home = () => {
         <div className="relative container mx-auto px-6 py-20">
           <div className="text-center mb-16">
             <div className="animate-on-scroll" id="hero-title">
-              <h1 className={`text-6xl md:text-8xl font-bold mb-6 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <h1 className={`text-6xl md:text-8xl font-bold mb-6 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     WYMA
   </span>
-  <span className="text-yellow-400 drop-shadow-lg animate-pulse">i</span>
+  <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">i</span>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     N
   </span>
