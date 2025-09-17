@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Upload, DollarSign, Filter, ShoppingCart, Download, FileText, AlertCircle, CheckCircle, Trash2, FileSpreadsheet, FileDown } from 'lucide-react';
 import * as XLSX from 'xlsx';
 
@@ -12,6 +12,7 @@ const OrderGenerator = () => {
     maxItems: 50
   });
   const [uploadStatus, setUploadStatus] = useState('');
+  const orderSectionRef = useRef(null);
 
   // Generate sample order for demo
   const generateSampleOrder = () => {
@@ -175,7 +176,15 @@ const OrderGenerator = () => {
     }
 
     setGeneratedOrder(order);
-    setUploadStatus(`Order generated with ${order.length} items totaling $${currentValue.toFixed(2)}`);
+    setUploadStatus(`Order generated with ${order.length} items totaling ${currentValue.toFixed(2)}`);
+    
+    // Scroll to the generated order section
+    setTimeout(() => {
+      orderSectionRef.current?.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
   };
 
   const downloadOrder = () => {
@@ -477,8 +486,7 @@ const OrderGenerator = () => {
                   <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
                   <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
                     <p className="text-yellow-400 text-sm font-medium">
-                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.  Real version would allow 
-                      file upload of your catalog and AI will generate your order based on the parameters you input.
+                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
                     </p>
                   </div>
                 </div>
@@ -585,7 +593,7 @@ const OrderGenerator = () => {
 
         {/* Generated Order */}
         {generatedOrder.length > 0 && (
-          <div className="mt-12 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+          <div ref={orderSectionRef} className="mt-12 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold flex items-center gap-3">
                 <ShoppingCart className="text-green-400" size={24} />
