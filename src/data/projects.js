@@ -4,7 +4,7 @@ export const projects = [
         id: 1,
         title: "AI Order generator",
         slug: "order-generator", 
-        category: "websites",
+        category: "productivity",
         description: "AI-powered retail order generation tool with smart budget optimization",
         longDescription: "An intelligent order generation platform that helps retailers create optimized orders based on budget constraints and product parameters. Upload your catalog and let AI generate the perfect order mix.",
         tech: ["React", "SheetJS", "AI Algorithm", "PDF Export"],
@@ -157,5 +157,5 @@ export const projects = [
     { id: 'ios', label: 'iOS Apps', icon: 'Smartphone' },
     { id: 'macos', label: 'macOS Apps', icon: 'Monitor' },
     { id: 'fun', label: 'Fun Stuff', icon: 'Code' },
-    { id: 'bots', label: 'Bots', icon: 'Bot' }
+    { id: 'productivity', label: 'Productivity', icon: 'Bot' }
   ];
