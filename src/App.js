@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import ProjectDetail from './components/ProjectDetail';
 import AdminPanel from './components/AdminPanel';
+import OrderGenerator from './components/OrderGenerator';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/order-generator" element={<OrderGenerator />} />
         </Routes>
       </Layout>
     </Router>
