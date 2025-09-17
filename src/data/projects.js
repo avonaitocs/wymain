@@ -1,29 +1,29 @@
 export const projects = [
     {
-      id: 1,
-      title: "AI Chat Interface",
-      slug: "ai-chat-interface",
-      category: "websites",
-      description: "Modern web interface for AI conversation with real-time responses and context awareness",
-      longDescription: "A sophisticated web application that provides an intuitive interface for AI-powered conversations. Features real-time message streaming, context-aware responses, and a beautiful, responsive design. Built with modern React patterns and optimized for performance.",
-      tech: ["React", "Node.js", "OpenAI API", "WebSockets"],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      images: [
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-        "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
-      ],
-      github: "#",
-      demo: "#",
-      challenges: "Implementing real-time streaming responses while maintaining context across conversations",
-      outcome: "Successfully deployed application serving 1000+ daily conversations with 99.9% uptime",
-      features: [
-        "Real-time message streaming",
-        "Context-aware conversations",
-        "Dark/light theme support", 
-        "Message history persistence",
-        "Responsive mobile design"
-      ]
-    },
+      {
+        id: 1,
+        title: "Order Generator",
+        slug: "order-generator", 
+        category: "websites",
+        description: "AI-powered retail order generation tool with smart budget optimization",
+        longDescription: "An intelligent order generation platform that helps retailers create optimized orders based on budget constraints and product parameters. Upload your catalog and let AI generate the perfect order mix.",
+        tech: ["React", "SheetJS", "AI Algorithm", "PDF Export"],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+        images: [
+          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+        ],
+        github: "#",
+        demo: "/order-generator", // This will link directly to the tool
+        challenges: "Creating an intelligent algorithm that optimizes product selection within budget constraints",
+        outcome: "Successfully generates optimized orders with Excel/PDF export capabilities",
+        features: [
+          "Smart catalog upload (CSV/JSON)",
+          "Budget-based optimization",
+          "Price range filtering", 
+          "Excel & PDF export",
+          "Real-time order generation"
+        ]
+      },
     {
       id: 2,
       title: "AI Assistant iOS App",
