@@ -1,6 +1,6 @@
 export const projects = [
     {
-      {
+      
         id: 1,
         title: "Order Generator",
         slug: "order-generator", 
