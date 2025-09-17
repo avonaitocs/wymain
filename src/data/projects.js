@@ -2,7 +2,7 @@ export const projects = [
     {
       
         id: 1,
-        title: "Order Generator",
+        title: "AI Order generator",
         slug: "order-generator", 
         category: "websites",
         description: "AI-powered retail order generation tool with smart budget optimization",
