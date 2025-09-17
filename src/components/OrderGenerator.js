@@ -13,7 +13,59 @@ const OrderGenerator = () => {
   });
   const [uploadStatus, setUploadStatus] = useState('');
 
-  // Handle file upload and parsing
+  // Generate sample order for demo
+  const generateSampleOrder = () => {
+    // Load sample catalog if not already loaded
+    if (catalog.length === 0) {
+      const sampleCatalog = [
+        { id: 1, name: "Wireless Headphones", price: 79.99, description: "High-quality bluetooth headphones", category: "Electronics", stock: 50 },
+        { id: 2, name: "Coffee Mug", price: 12.50, description: "Ceramic coffee mug", category: "Kitchen", stock: 100 },
+        { id: 3, name: "Notebook", price: 8.99, description: "Spiral-bound notebook", category: "Office", stock: 75 },
+        { id: 4, name: "Phone Case", price: 24.99, description: "Protective phone case", category: "Electronics", stock: 80 },
+        { id: 5, name: "Desk Lamp", price: 45.00, description: "Adjustable LED desk lamp", category: "Office", stock: 30 },
+        { id: 6, name: "Water Bottle", price: 18.99, description: "Stainless steel water bottle", category: "Sports", stock: 60 },
+        { id: 7, name: "Bluetooth Speaker", price: 89.99, description: "Portable wireless speaker", category: "Electronics", stock: 40 },
+        { id: 8, name: "Planner", price: 15.99, description: "Daily planner organizer", category: "Office", stock: 90 },
+        { id: 9, name: "Yoga Mat", price: 32.99, description: "Non-slip exercise mat", category: "Sports", stock: 45 },
+        { id: 10, name: "Backpack", price: 49.99, description: "Durable travel backpack", category: "Travel", stock: 35 }
+      ];
+      setCatalog(sampleCatalog);
+    }
+
+    // Set sample parameters
+    const sampleParams = {
+      totalValue: '500',
+      minPrice: '10',
+      maxPrice: '100',
+      maxItems: 8
+    };
+    setOrderParams(sampleParams);
+
+    // Generate order with sample data
+    const catalogToUse = catalog.length > 0 ? catalog : [
+      { id: 1, name: "Wireless Headphones", price: 79.99, description: "High-quality bluetooth headphones", category: "Electronics", stock: 50 },
+      { id: 2, name: "Coffee Mug", price: 12.50, description: "Ceramic coffee mug", category: "Kitchen", stock: 100 },
+      { id: 3, name: "Notebook", price: 8.99, description: "Spiral-bound notebook", category: "Office", stock: 75 },
+      { id: 4, name: "Phone Case", price: 24.99, description: "Protective phone case", category: "Electronics", stock: 80 },
+      { id: 5, name: "Desk Lamp", price: 45.00, description: "Adjustable LED desk lamp", category: "Office", stock: 30 },
+      { id: 6, name: "Water Bottle", price: 18.99, description: "Stainless steel water bottle", category: "Sports", stock: 60 },
+      { id: 7, name: "Bluetooth Speaker", price: 89.99, description: "Portable wireless speaker", category: "Electronics", stock: 40 },
+      { id: 8, name: "Planner", price: 15.99, description: "Daily planner organizer", category: "Office", stock: 90 }
+    ];
+
+    // Create a realistic sample order
+    const sampleOrder = [
+      { ...catalogToUse[6], quantity: 2, totalPrice: catalogToUse[6].price * 2 }, // Bluetooth Speaker x2
+      { ...catalogToUse[0], quantity: 3, totalPrice: catalogToUse[0].price * 3 }, // Wireless Headphones x3
+      { ...catalogToUse[4], quantity: 1, totalPrice: catalogToUse[4].price * 1 }, // Desk Lamp x1
+      { ...catalogToUse[3], quantity: 4, totalPrice: catalogToUse[3].price * 4 }, // Phone Case x4
+      { ...catalogToUse[5], quantity: 2, totalPrice: catalogToUse[5].price * 2 }, // Water Bottle x2
+    ];
+
+    setGeneratedOrder(sampleOrder);
+    const totalValue = sampleOrder.reduce((sum, item) => sum + item.totalPrice, 0);
+    setUploadStatus(`Sample order generated with ${sampleOrder.length} items totaling ${totalValue.toFixed(2)}`);
+  };
   const handleFileUpload = useCallback((event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -379,6 +431,17 @@ const OrderGenerator = () => {
               <span className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">Smart Algorithm</span>
               <span className="px-4 py-2 bg-purple-500/20 rounded-full border border-purple-500/30">Budget Optimization</span>
               <span className="px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">Instant Results</span>
+            </div>
+            
+            {/* Quick Demo Button */}
+            <div className="mt-8">
+              <button
+                onClick={generateSampleOrder}
+                className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-green-500/25 font-semibold"
+              >
+                ⚡ View Sample Order
+              </button>
+              <p className="text-gray-400 text-sm mt-2">See what the tool generates instantly</p>
             </div>
           </div>
         </div>
