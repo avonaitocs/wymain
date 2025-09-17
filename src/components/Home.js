@@ -51,7 +51,7 @@ const Home = () => {
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     WYM
   </span>
-  <span className="text-red-500">ai</span>
+  <span className="text-yellow-400 drop-shadow-lg animate-pulse">ai</span>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     N
   </span>
