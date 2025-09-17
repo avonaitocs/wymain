@@ -197,9 +197,6 @@ const OrderGenerator = () => {
     // Create workbook and worksheet
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet(worksheetData);
-
-    // Style the header rows
-    const range = XLSX.utils.decode_range(ws['!ref']);
     
     // Set column widths
     ws['!cols'] = [
