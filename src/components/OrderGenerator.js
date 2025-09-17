@@ -19,52 +19,30 @@ const OrderGenerator = () => {
     const file = event.target.files[0];
     if (!file) return;
 
-    setIsLoading(true);
-    setUploadStatus('');
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const text = e.target.result;
-        let parsedData = [];
-
-        if (file.name.endsWith('.json')) {
-          parsedData = JSON.parse(text);
-        } else if (file.name.endsWith('.csv')) {
-          const lines = text.split('\n');
-          const headers = lines[0].split(',').map(h => h.trim());
-          
-          parsedData = lines.slice(1).map(line => {
-            const values = line.split(',').map(v => v.trim());
-            const item = {};
-            headers.forEach((header, index) => {
-              item[header] = values[index];
-            });
-            return item;
-          }).filter(item => item.name && item.price);
-        }
-
-        // Normalize data structure
-        const normalizedCatalog = parsedData.map((item, index) => ({
-          id: item.id || index,
-          name: item.name || item.product_name || item.title,
-          price: parseFloat(item.price || item.cost || item.amount || 0),
-          description: item.description || item.desc || '',
-          category: item.category || item.type || 'General',
-          stock: parseInt(item.stock || item.inventory || item.quantity || 100)
-        })).filter(item => item.name && item.price > 0);
-
-        setCatalog(normalizedCatalog);
-        setUploadStatus(`Successfully loaded ${normalizedCatalog.length} products`);
-      } catch (error) {
-        setUploadStatus('Error parsing file. Please check the format.');
-        console.error('Parse error:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    reader.readAsText(file);
+    // Demo mode - prevent actual uploads
+    setUploadStatus('This is a demo version. File uploads are disabled for security purposes.');
+    
+    // Clear the file input
+    event.target.value = '';
+    
+    // Load sample data for demonstration
+    setTimeout(() => {
+      const sampleCatalog = [
+        { id: 1, name: "Wireless Headphones", price: 79.99, description: "High-quality bluetooth headphones", category: "Electronics", stock: 50 },
+        { id: 2, name: "Coffee Mug", price: 12.50, description: "Ceramic coffee mug", category: "Kitchen", stock: 100 },
+        { id: 3, name: "Notebook", price: 8.99, description: "Spiral-bound notebook", category: "Office", stock: 75 },
+        { id: 4, name: "Phone Case", price: 24.99, description: "Protective phone case", category: "Electronics", stock: 80 },
+        { id: 5, name: "Desk Lamp", price: 45.00, description: "Adjustable LED desk lamp", category: "Office", stock: 30 },
+        { id: 6, name: "Water Bottle", price: 18.99, description: "Stainless steel water bottle", category: "Sports", stock: 60 },
+        { id: 7, name: "Bluetooth Speaker", price: 89.99, description: "Portable wireless speaker", category: "Electronics", stock: 40 },
+        { id: 8, name: "Planner", price: 15.99, description: "Daily planner organizer", category: "Office", stock: 90 },
+        { id: 9, name: "Yoga Mat", price: 32.99, description: "Non-slip exercise mat", category: "Sports", stock: 45 },
+        { id: 10, name: "Backpack", price: 49.99, description: "Durable travel backpack", category: "Travel", stock: 35 }
+      ];
+      
+      setCatalog(sampleCatalog);
+      setUploadStatus(`Demo: Loaded ${sampleCatalog.length} sample products. Try generating an order!`);
+    }, 1000);
   }, []);
 
   // Generate order based on parameters
@@ -425,7 +403,7 @@ const OrderGenerator = () => {
               <label className="block w-full">
                 <input
                   type="file"
-                  accept=".csv,.json"
+                  accept=".csv,.json,.pdf"
                   onChange={handleFileUpload}
                   className="hidden"
                   disabled={isLoading}
@@ -435,7 +413,12 @@ const OrderGenerator = () => {
                   <p className="text-lg mb-2">
                     {isLoading ? 'Processing...' : 'Drop your catalog file here or click to browse'}
                   </p>
-                  <p className="text-sm text-gray-400">Supports CSV and JSON formats</p>
+                  <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
+                  <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
+                    <p className="text-yellow-400 text-sm font-medium">
+                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
+                    </p>
+                  </div>
                 </div>
               </label>
             </div>
