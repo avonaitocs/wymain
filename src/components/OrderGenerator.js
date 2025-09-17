@@ -4,7 +4,6 @@ import * as XLSX from 'xlsx';
 
 const OrderGenerator = () => {
   const [catalog, setCatalog] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [generatedOrder, setGeneratedOrder] = useState([]);
   const [orderParams, setOrderParams] = useState({
     totalValue: '',
@@ -406,12 +405,11 @@ const OrderGenerator = () => {
                   accept=".csv,.json,.pdf"
                   onChange={handleFileUpload}
                   className="hidden"
-                  disabled={isLoading}
                 />
                 <div className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 transition-colors">
                   <FileText className="mx-auto mb-4 text-gray-400" size={48} />
                   <p className="text-lg mb-2">
-                    {isLoading ? 'Processing...' : 'Drop your catalog file here or click to browse'}
+                    Drop your catalog file here or click to browse
                   </p>
                   <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
                   <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
