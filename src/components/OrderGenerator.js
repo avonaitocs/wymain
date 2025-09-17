@@ -477,7 +477,8 @@ const OrderGenerator = () => {
                   <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
                   <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
                     <p className="text-yellow-400 text-sm font-medium">
-                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
+                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.  Real version would allow 
+                      file upload of your catalog and AI will generate your order based on the parameters you input.
                     </p>
                   </div>
                 </div>
