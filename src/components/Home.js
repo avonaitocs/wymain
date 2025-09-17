@@ -164,6 +164,8 @@ const Home = () => {
                   </a>
                   <a
                     href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1 text-sm text-gray-400 hover:text-purple-400 transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
