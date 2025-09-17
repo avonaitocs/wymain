@@ -49,9 +49,9 @@ const Home = () => {
             <div className="animate-on-scroll" id="hero-title">
             <h1 className={`text-6xl md:text-8xl font-bold mb-6 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-    WYMA
+    WYM
   </span>
-  <span className="text-red-500">i</span>
+  <span className="text-red-500">ai</span>
   <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
     N
   </span>
