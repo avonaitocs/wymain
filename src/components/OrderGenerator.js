@@ -676,6 +676,154 @@ const OrderGenerator = () => {
           </div>
         )}
       </div>
+
+      {/* Development Journey Section */}
+      <div className="container mx-auto px-6 py-20 border-t border-gray-800">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Development Journey
+            </span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Technical steps and decisions behind building this order generation demo
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Phase 1 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                <span className="text-blue-400 font-bold text-sm">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-blue-400">Planning & Design</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• Component architecture planning</li>
+              <li>• UI/UX design matching portfolio theme</li>
+              <li>• Feature requirements definition</li>
+              <li>• Algorithm design for order optimization</li>
+            </ul>
+          </div>
+
+          {/* Phase 2 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                <span className="text-purple-400 font-bold text-sm">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-purple-400">React Development</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• OrderGenerator.js component creation</li>
+              <li>• State management with React hooks</li>
+              <li>• File upload and parsing logic</li>
+              <li>• Export functionality (Excel, PDF, JSON)</li>
+            </ul>
+          </div>
+
+          {/* Phase 3 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                <span className="text-green-400 font-bold text-sm">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-green-400">Routing Integration</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• Added route to App.js</li>
+              <li>• React Router configuration</li>
+              <li>• Component import and setup</li>
+              <li>• Navigation planning</li>
+            </ul>
+          </div>
+
+          {/* Phase 4 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                <span className="text-orange-400 font-bold text-sm">4</span>
+              </div>
+              <h3 className="text-xl font-bold text-orange-400">Deployment</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• Netlify configuration and setup</li>
+              <li>• Dependency management (xlsx package)</li>
+              <li>• Linting error resolution</li>
+              <li>• React Router _redirects file</li>
+            </ul>
+          </div>
+
+          {/* Phase 5 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-pink-500/20 rounded-full flex items-center justify-center">
+                <span className="text-pink-400 font-bold text-sm">5</span>
+              </div>
+              <h3 className="text-xl font-bold text-pink-400">Demo Mode</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• Security-first demo implementation</li>
+              <li>• Sample data integration</li>
+              <li>• PDF support addition</li>
+              <li>• User experience optimization</li>
+            </ul>
+          </div>
+
+          {/* Phase 6 */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                <span className="text-cyan-400 font-bold text-sm">6</span>
+              </div>
+              <h3 className="text-xl font-bold text-cyan-400">Enhancement</h3>
+            </div>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li>• Sample order generation button</li>
+              <li>• Status messages and feedback</li>
+              <li>• Multiple export formats</li>
+              <li>• Mobile responsiveness</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Technical Highlights */}
+        <div className="mt-16 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/30">
+          <h3 className="text-2xl font-bold mb-6 text-center">Technical Highlights</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-lg font-semibold text-blue-400 mb-3">Frontend Technologies</h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-500/30">React</span>
+                <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-500/30">React Router</span>
+                <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-500/30">Tailwind CSS</span>
+                <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-500/30">SheetJS</span>
+                <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm border border-blue-500/30">Lucide Icons</span>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-purple-400 mb-3">Key Features Implemented</h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm border border-purple-500/30">File Processing</span>
+                <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm border border-purple-500/30">Order Algorithm</span>
+                <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm border border-purple-500/30">Multi-format Export</span>
+                <span className="px-3 py-1 bg-purple-500/20 rounded-full text-sm border border-purple-500/30">Responsive Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Future Considerations */}
+        <div className="mt-12 text-center">
+          <h3 className="text-xl font-bold mb-4 text-gray-300">Production Considerations</h3>
+          <p className="text-gray-400 max-w-3xl mx-auto text-sm leading-relaxed">
+            For a production version, this would require backend infrastructure with secure file handling, 
+            database integration, user authentication, and real AI integration for advanced order optimization. 
+            The current demo effectively showcases the frontend capabilities and user experience design.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
