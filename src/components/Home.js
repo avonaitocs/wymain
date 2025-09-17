@@ -82,7 +82,7 @@ const Home = () => {
             Featured Projects
           </h2>
           <p className={`text-gray-400 text-center max-w-2xl mx-auto transition-all duration-1000 delay-200 ${isVisible['portfolio-header'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Explore my latest work in AI-powered applications and intelligent systems
+            Projects completed with AI
           </p>
         </div>
 
