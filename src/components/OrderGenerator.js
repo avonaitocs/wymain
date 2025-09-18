@@ -463,6 +463,41 @@ const OrderGenerator = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
+          {/* Catalog Preview Section */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <FileText className="text-green-400" size={24} />
+              Catalog Preview
+            </h2>
+
+            {catalog.length > 0 ? (
+              <div className="bg-gray-700/30 rounded-lg p-4">
+                <h3 className="font-semibold mb-2">Loaded Catalog</h3>
+                <p className="text-sm text-gray-400 mb-3">{catalog.length} products available</p>
+                <div className="max-h-60 overflow-y-auto space-y-2">
+                  {catalog.map((item, index) => (
+                    <div key={index} className="flex justify-between items-center p-2 bg-gray-600/30 rounded text-sm">
+                      <div className="flex-1 mr-2">
+                        <div className="font-medium truncate">{item.name}</div>
+                        <div className="text-xs text-gray-400 truncate">{item.description}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-green-400 font-semibold">${item.price.toFixed(2)}</div>
+                        <div className="text-xs text-gray-400">{item.category}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <FileText className="mx-auto mb-4 text-gray-500" size={48} />
+                <p className="text-gray-500 mb-2">No catalog loaded</p>
+                <p className="text-sm text-gray-600">Upload a catalog or generate sample data to see preview</p>
+              </div>
+            )}
+          </div>
+
           {/* Upload Section */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
@@ -497,24 +532,6 @@ const OrderGenerator = () => {
                   <CheckCircle className="text-green-400" size={20} />
                 }
                 <span className="text-sm">{uploadStatus}</span>
-              </div>
-            )}
-
-            {catalog.length > 0 && (
-              <div className="bg-gray-700/30 rounded-lg p-4">
-                <h3 className="font-semibold mb-2">Catalog Preview</h3>
-                <p className="text-sm text-gray-400 mb-3">{catalog.length} products loaded</p>
-                <div className="max-h-40 overflow-y-auto space-y-2">
-                  {catalog.slice(0, 5).map((item, index) => (
-                    <div key={index} className="flex justify-between text-sm">
-                      <span className="truncate mr-2">{item.name}</span>
-                      <span className="text-green-400">${item.price.toFixed(2)}</span>
-                    </div>
-                  ))}
-                  {catalog.length > 5 && (
-                    <p className="text-xs text-gray-400">...and {catalog.length - 5} more items</p>
-                  )}
-                </div>
               </div>
             )}
           </div>
