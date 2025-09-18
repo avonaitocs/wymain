@@ -463,37 +463,101 @@ const OrderGenerator = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* Catalog Preview Section */}
+          {/* Combined Upload & Catalog Preview Section */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <FileText className="text-green-400" size={24} />
-              Catalog Preview
+              <Upload className="text-blue-400" size={24} />
+              Catalog Management
             </h2>
 
-            {catalog.length > 0 ? (
-              <div className="bg-gray-700/30 rounded-lg p-4">
-                <h3 className="font-semibold mb-2">Loaded Catalog</h3>
-                <p className="text-sm text-gray-400 mb-3">{catalog.length} products available</p>
-                <div className="max-h-60 overflow-y-auto space-y-2">
-                  {catalog.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-2 bg-gray-600/30 rounded text-sm">
-                      <div className="flex-1 mr-2">
-                        <div className="font-medium truncate">{item.name}</div>
-                        <div className="text-xs text-gray-400 truncate">{item.description}</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-green-400 font-semibold">${item.price.toFixed(2)}</div>
-                        <div className="text-xs text-gray-400">{item.category}</div>
-                      </div>
-                    </div>
-                  ))}
+            {catalog.length === 0 ? (
+              /* Upload Interface */
+              <div>
+                <div 
+                  onClick={handleFileUpload}
+                  className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 transition-colors mb-6"
+                >
+                  <FileText className="mx-auto mb-4 text-gray-400" size={48} />
+                  <p className="text-lg mb-2">
+                    Drop your catalog file here or click to browse
+                  </p>
+                  <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
+                  <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
+                    <p className="text-yellow-400 text-sm font-medium">
+                      🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
+                    </p>
+                  </div>
                 </div>
+
+                {uploadStatus && (
+                  <div className={`flex items-center gap-2 p-4 rounded-lg ${
+                    uploadStatus.includes('Error') ? 'bg-red-500/20 border border-red-500/30' : 'bg-green-500/20 border border-green-500/30'
+                  }`}>
+                    {uploadStatus.includes('Error') ? 
+                      <AlertCircle className="text-red-400" size={20} /> : 
+                      <CheckCircle className="text-green-400" size={20} />
+                    }
+                    <span className="text-sm">{uploadStatus}</span>
+                  </div>
+                )}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <FileText className="mx-auto mb-4 text-gray-500" size={48} />
-                <p className="text-gray-500 mb-2">No catalog loaded</p>
-                <p className="text-sm text-gray-600">Upload a catalog or generate sample data to see preview</p>
+              /* Catalog Preview */
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 className="font-semibold text-green-400">Catalog Loaded</h3>
+                    <p className="text-sm text-gray-400">{catalog.length} products available</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setCatalog([]);
+                      setGeneratedOrder([]);
+                      setUploadStatus('');
+                    }}
+                    className="px-3 py-1 text-xs bg-gray-600/50 hover:bg-gray-600 rounded border border-gray-500 transition-colors"
+                  >
+                    Clear
+                  </button>
+                </div>
+
+                <div className="bg-gray-700/30 rounded-lg p-4 mb-4">
+                  <div className="max-h-60 overflow-y-auto space-y-2">
+                    {catalog.map((item, index) => (
+                      <div key={index} className="flex justify-between items-center p-2 bg-gray-600/30 rounded text-sm">
+                        <div className="flex-1 mr-2">
+                          <div className="font-medium truncate">{item.name}</div>
+                          <div className="text-xs text-gray-400 truncate">{item.description}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-green-400 font-semibold">${item.price.toFixed(2)}</div>
+                          <div className="text-xs text-gray-400">{item.category}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div 
+                  onClick={handleFileUpload}
+                  className="border border-gray-600 rounded-lg p-4 text-center cursor-pointer hover:border-blue-500 transition-colors"
+                >
+                  <p className="text-sm text-gray-400">
+                    Click to load different sample data
+                  </p>
+                </div>
+
+                {uploadStatus && (
+                  <div className={`flex items-center gap-2 p-4 rounded-lg mt-4 ${
+                    uploadStatus.includes('Error') ? 'bg-red-500/20 border border-red-500/30' : 'bg-green-500/20 border border-green-500/30'
+                  }`}>
+                    {uploadStatus.includes('Error') ? 
+                      <AlertCircle className="text-red-400" size={20} /> : 
+                      <CheckCircle className="text-green-400" size={20} />
+                    }
+                    <span className="text-sm">{uploadStatus}</span>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -563,44 +627,6 @@ const OrderGenerator = () => {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Upload Section */}
-        <div className="mt-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-            <Upload className="text-blue-400" size={24} />
-            Upload Catalog
-          </h2>
-          
-          <div className="mb-6">
-            <div 
-              onClick={handleFileUpload}
-              className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
-            >
-              <FileText className="mx-auto mb-4 text-gray-400" size={48} />
-              <p className="text-lg mb-2">
-                Drop your catalog file here or click to browse
-              </p>
-              <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
-              <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
-                <p className="text-yellow-400 text-sm font-medium">
-                  🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {uploadStatus && (
-            <div className={`flex items-center gap-2 p-4 rounded-lg mb-6 ${
-              uploadStatus.includes('Error') ? 'bg-red-500/20 border border-red-500/30' : 'bg-green-500/20 border border-green-500/30'
-            }`}>
-              {uploadStatus.includes('Error') ? 
-                <AlertCircle className="text-red-400" size={20} /> : 
-                <CheckCircle className="text-green-400" size={20} />
-              }
-              <span className="text-sm">{uploadStatus}</span>
-            </div>
-          )}
         </div>
 
         {/* Generated Order */}
