@@ -498,44 +498,6 @@ const OrderGenerator = () => {
             )}
           </div>
 
-          {/* Upload Section */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Upload className="text-blue-400" size={24} />
-              Upload Catalog
-            </h2>
-            
-            <div className="mb-6">
-              <div 
-                onClick={handleFileUpload}
-                className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
-              >
-                <FileText className="mx-auto mb-4 text-gray-400" size={48} />
-                <p className="text-lg mb-2">
-                  Drop your catalog file here or click to browse
-                </p>
-                <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
-                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
-                  <p className="text-yellow-400 text-sm font-medium">
-                    🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {uploadStatus && (
-              <div className={`flex items-center gap-2 p-4 rounded-lg mb-6 ${
-                uploadStatus.includes('Error') ? 'bg-red-500/20 border border-red-500/30' : 'bg-green-500/20 border border-green-500/30'
-              }`}>
-                {uploadStatus.includes('Error') ? 
-                  <AlertCircle className="text-red-400" size={20} /> : 
-                  <CheckCircle className="text-green-400" size={20} />
-                }
-                <span className="text-sm">{uploadStatus}</span>
-              </div>
-            )}
-          </div>
-
           {/* Parameters Section */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
@@ -601,6 +563,44 @@ const OrderGenerator = () => {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Upload Section */}
+        <div className="mt-8 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+            <Upload className="text-blue-400" size={24} />
+            Upload Catalog
+          </h2>
+          
+          <div className="mb-6">
+            <div 
+              onClick={handleFileUpload}
+              className="border-2 border-dashed border-gray-600 rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
+            >
+              <FileText className="mx-auto mb-4 text-gray-400" size={48} />
+              <p className="text-lg mb-2">
+                Drop your catalog file here or click to browse
+              </p>
+              <p className="text-sm text-gray-400 mb-2">Supports CSV, JSON, and PDF formats</p>
+              <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mt-4">
+                <p className="text-yellow-400 text-sm font-medium">
+                  🎯 Demo Mode: File uploads disabled for security. Sample data will be loaded for testing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {uploadStatus && (
+            <div className={`flex items-center gap-2 p-4 rounded-lg mb-6 ${
+              uploadStatus.includes('Error') ? 'bg-red-500/20 border border-red-500/30' : 'bg-green-500/20 border border-green-500/30'
+            }`}>
+              {uploadStatus.includes('Error') ? 
+                <AlertCircle className="text-red-400" size={20} /> : 
+                <CheckCircle className="text-green-400" size={20} />
+              }
+              <span className="text-sm">{uploadStatus}</span>
+            </div>
+          )}
         </div>
 
         {/* Generated Order */}
