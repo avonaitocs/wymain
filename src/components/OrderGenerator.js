@@ -449,7 +449,7 @@ const OrderGenerator = () => {
                 onClick={generateSampleOrder}
                 className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-green-500/25 font-semibold"
               >
-                ⚡ View Sample Order
+                ⚡ Generate Sample Catalog and Sample Order
               </button>
               <p className="text-gray-400 text-sm mt-2">See what the tool generates instantly</p>
             </div>
