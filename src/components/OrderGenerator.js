@@ -13,6 +13,7 @@ const OrderGenerator = () => {
   });
   const [uploadStatus, setUploadStatus] = useState('');
   const orderSectionRef = useRef(null);
+  const catalogSectionRef = useRef(null);
 
   // Generate sample order for demo
   const generateSampleOrder = () => {
@@ -464,7 +465,7 @@ const OrderGenerator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Combined Upload & Catalog Preview Section */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+          <div ref={catalogSectionRef} className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <Upload className="text-blue-400" size={24} />
               Catalog Management
