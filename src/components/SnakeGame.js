@@ -155,32 +155,100 @@ const SnakeGame = () => {
     }
     ctx.stroke();
 
-    // Draw snake with optimized rendering
+    // Draw snake with enhanced head and eyes
     ctx.save();
     snake.forEach((segment, index) => {
       if (index === 0) {
-        // Head - gradient (cached for performance)
+        // Head - larger and with eyes
+        const headSize = GRID_SIZE + 4; // Slightly larger head
+        const headX = segment.x * GRID_SIZE - 2;
+        const headY = segment.y * GRID_SIZE - 2;
+        
+        // Head gradient
         const gradient = ctx.createLinearGradient(
-          segment.x * GRID_SIZE, 
-          segment.y * GRID_SIZE, 
-          (segment.x + 1) * GRID_SIZE, 
-          (segment.y + 1) * GRID_SIZE
+          headX, headY, headX + headSize, headY + headSize
         );
         gradient.addColorStop(0, '#3b82f6');
         gradient.addColorStop(1, '#8b5cf6');
         ctx.fillStyle = gradient;
+        
+        // Draw head with rounded corners
+        ctx.beginPath();
+        ctx.roundRect(headX, headY, headSize, headSize, 4);
+        ctx.fill();
+        
+        // Draw eyes based on direction
+        ctx.fillStyle = '#ffffff';
+        const eyeSize = 4;
+        let leftEyeX, leftEyeY, rightEyeX, rightEyeY;
+        
+        // Position eyes based on movement direction
+        const centerX = headX + headSize / 2;
+        const centerY = headY + headSize / 2;
+        
+        if (direction.x === 1) { // Moving right
+          leftEyeX = centerX + 4;
+          leftEyeY = centerY - 6;
+          rightEyeX = centerX + 4;
+          rightEyeY = centerY + 2;
+        } else if (direction.x === -1) { // Moving left
+          leftEyeX = centerX - 8;
+          leftEyeY = centerY - 6;
+          rightEyeX = centerX - 8;
+          rightEyeY = centerY + 2;
+        } else if (direction.y === -1) { // Moving up
+          leftEyeX = centerX - 6;
+          leftEyeY = centerY - 8;
+          rightEyeX = centerX + 2;
+          rightEyeY = centerY - 8;
+        } else if (direction.y === 1) { // Moving down
+          leftEyeX = centerX - 6;
+          leftEyeY = centerY + 4;
+          rightEyeX = centerX + 2;
+          rightEyeY = centerY + 4;
+        } else { // Default position (not moving yet)
+          leftEyeX = centerX - 4;
+          leftEyeY = centerY - 4;
+          rightEyeX = centerX + 2;
+          rightEyeY = centerY - 4;
+        }
+        
+        // Draw white eyes
+        ctx.beginPath();
+        ctx.arc(leftEyeX, leftEyeY, eyeSize, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(rightEyeX, rightEyeY, eyeSize, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw black pupils
+        ctx.fillStyle = '#000000';
+        const pupilSize = 2;
+        
+        ctx.beginPath();
+        ctx.arc(leftEyeX, leftEyeY, pupilSize, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(rightEyeX, rightEyeY, pupilSize, 0, Math.PI * 2);
+        ctx.fill();
+        
       } else {
-        // Body - optimized opacity calculation
+        // Body segments - standard size
         const opacity = Math.max(0.3, 1 - (index * 0.08));
         ctx.fillStyle = `rgba(59, 130, 246, ${opacity})`;
+        
+        ctx.beginPath();
+        ctx.roundRect(
+          segment.x * GRID_SIZE + 1, 
+          segment.y * GRID_SIZE + 1, 
+          GRID_SIZE - 2, 
+          GRID_SIZE - 2,
+          2
+        );
+        ctx.fill();
       }
-      
-      ctx.fillRect(
-        segment.x * GRID_SIZE + 1, 
-        segment.y * GRID_SIZE + 1, 
-        GRID_SIZE - 2, 
-        GRID_SIZE - 2
-      );
     });
     ctx.restore();
 
