@@ -12,7 +12,7 @@ export const projects = [
       images: [
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
       ],
-      github: "#",
+      github: "source-code",
       demo: "/order-generator", // This will link directly to the tool
       challenges: "Creating an intelligent algorithm that optimizes product selection within budget constraints",
       outcome: "Successfully generates optimized orders with Excel/PDF export capabilities",

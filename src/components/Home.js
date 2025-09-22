@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
 import { projects, categories } from '../data/projects';
+import { openSourceCodeViewer } from '../utils/SourceCodeViewer';
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -38,6 +39,17 @@ const Home = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleGithubClick = (e, project) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (project.github === 'source-code') {
+      openSourceCodeViewer(project.slug);
+    } else {
+      window.open(project.github, '_blank');
+    }
+  };
 
   return (
     <div>
@@ -154,14 +166,14 @@ const Home = () => {
                 </div>
                 
                 <div className="flex gap-3 relative z-20">
-                  <a
-                    href={project.github}
-                    className="flex items-center gap-1 text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                    onClick={(e) => e.stopPropagation()}
+                  <button
+                    onClick={(e) => handleGithubClick(e, project)}
+                    className="flex items-center gap-1 text-sm text-gray-400 hover:text-blue-400 transition-colors cursor-pointer"
+                    title="View Source Code"
                   >
                     <Github size={16} />
                     Code
-                  </a>
+                  </button>
                   <a
                     href={project.demo}
                     target="_blank"

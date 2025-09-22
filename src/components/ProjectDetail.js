@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, CheckCircle2, Code, Monitor, Smartphone, Bot, Globe } from 'lucide-react';
 import { projects, categories } from '../data/projects';
+import { openSourceCodeViewer } from '../utils/SourceCodeViewer';
 
 const ProjectDetail = () => {
   const { projectSlug } = useParams();
@@ -47,6 +48,16 @@ const ProjectDetail = () => {
     .filter(p => p.category === project.category && p.id !== project.id)
     .slice(0, 3);
 
+  const handleGithubClick = (e) => {
+    e.preventDefault();
+    
+    if (project.github === 'source-code') {
+      openSourceCodeViewer(project.slug);
+    } else {
+      window.open(project.github, '_blank');
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -75,13 +86,14 @@ const ProjectDetail = () => {
           </p>
           
           <div className="flex gap-4">
-            <a
-              href={project.github}
-              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105"
+            <button
+              onClick={handleGithubClick}
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 cursor-pointer"
+              title="View Source Code"
             >
               <Github size={20} />
               View Code
-            </a>
+            </button>
             <a
               href={project.demo}
               className="flex items-center gap-2 px-6 py-3 border border-gray-700 rounded-full hover:border-gray-500 transition-all duration-300 hover:scale-105 bg-gray-800/50 backdrop-blur-sm"
@@ -170,13 +182,14 @@ const ProjectDetail = () => {
             <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50">
               <h3 className="text-xl font-bold mb-4">Quick Links</h3>
               <div className="space-y-3">
-                <a
-                  href={project.github}
-                  className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors"
+                <button
+                  onClick={handleGithubClick}
+                  className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors cursor-pointer w-full text-left"
+                  title="View Source Code"
                 >
                   <Github size={20} />
                   Source Code
-                </a>
+                </button>
                 <a
                   href={project.demo}
                   className="flex items-center gap-3 text-gray-400 hover:text-purple-400 transition-colors"
