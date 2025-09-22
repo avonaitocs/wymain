@@ -14,9 +14,31 @@ const SnakeGame = () => {
     return saved ? parseInt(saved) : 0;
   });
   const [speed, setSpeed] = useState(150);
+  const [explosionParticles, setExplosionParticles] = useState([]);
 
   const GRID_SIZE = 20;
   const CANVAS_SIZE = 400;
+
+  // Create explosion particles
+  const createExplosion = useCallback((x, y) => {
+    const particles = [];
+    const particleCount = 20;
+    
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: x * GRID_SIZE + GRID_SIZE / 2,
+        y: y * GRID_SIZE + GRID_SIZE / 2,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        life: 1,
+        decay: Math.random() * 0.02 + 0.01,
+        size: Math.random() * 4 + 2,
+        color: Math.random() > 0.5 ? '#ef4444' : '#f97316'
+      });
+    }
+    
+    setExplosionParticles(particles);
+  }, []);
 
   // Generate random food position - fixed to avoid loop issues
   const generateFood = useCallback((snakeBody) => {
@@ -62,6 +84,7 @@ const SnakeGame = () => {
     setGameOver(false);
     setScore(0);
     setSpeed(150);
+    setExplosionParticles([]); // Clear any existing particles
   }, [generateFood]);
 
   const pauseGame = useCallback(() => {
@@ -130,7 +153,42 @@ const SnakeGame = () => {
         cancelAnimationFrame(animationId);
       }
     };
-  }, [direction, food, gameRunning, gameOver, speed, checkCollision, generateFood]);
+  }, [direction, food, gameRunning, gameOver, speed, checkCollision, generateFood, createExplosion]);
+
+  // Animate explosion particles
+  useEffect(() => {
+    if (explosionParticles.length === 0) return;
+
+    let animationId;
+    
+    const animateParticles = () => {
+      setExplosionParticles(prevParticles => {
+        const updatedParticles = prevParticles
+          .map(particle => ({
+            ...particle,
+            x: particle.x + particle.vx,
+            y: particle.y + particle.vy,
+            life: particle.life - particle.decay,
+            vy: particle.vy + 0.1 // Add gravity
+          }))
+          .filter(particle => particle.life > 0);
+        
+        if (updatedParticles.length > 0) {
+          animationId = requestAnimationFrame(animateParticles);
+        }
+        
+        return updatedParticles;
+      });
+    };
+
+    animationId = requestAnimationFrame(animateParticles);
+    
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [explosionParticles.length]);
 
   // Optimized canvas drawing
   useEffect(() => {
@@ -272,7 +330,20 @@ const SnakeGame = () => {
       GRID_SIZE - 4
     );
     ctx.restore();
-  }, [snake, food, direction.x, direction.y]);
+
+    // Draw explosion particles
+    if (explosionParticles.length > 0) {
+      ctx.save();
+      explosionParticles.forEach(particle => {
+        ctx.globalAlpha = particle.life;
+        ctx.fillStyle = particle.color;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+    }
+  }, [snake, food, direction.x, direction.y, explosionParticles]);
 
   // Handle keyboard input
   useEffect(() => {
