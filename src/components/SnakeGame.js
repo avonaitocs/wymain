@@ -20,13 +20,15 @@ const SnakeGame = () => {
 
   // Generate random food position
   const generateFood = useCallback((snakeBody) => {
-    let newFood;
-    do {
-      newFood = {
-        x: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE)),
-        y: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE))
-      };
-    } while (snakeBody.some(segment => segment.x === newFood.x && segment.y === newFood.y));
+    const getRandomPosition = () => ({
+      x: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE)),
+      y: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE))
+    });
+    
+    let newFood = getRandomPosition();
+    while (snakeBody.some(segment => segment.x === newFood.x && segment.y === newFood.y)) {
+      newFood = getRandomPosition();
+    }
     return newFood;
   }, []);
 
@@ -176,6 +178,9 @@ const SnakeGame = () => {
         case ' ':
           e.preventDefault();
           toggleGame();
+          break;
+        default:
+          // No action for other keys
           break;
       }
     };
