@@ -2,7 +2,277 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, CheckCircle2, Code, Monitor, Smartphone, Bot, Globe } from 'lucide-react';
 import { projects, categories } from '../data/projects';
-import { openSourceCodeViewer } from '../utils/SourceCodeViewer';
+
+// Source code data - moved directly into component
+const sourceCodeData = {
+  'snake-game': {
+    title: 'Snake Game',
+    description: 'Modern Snake game built with React and HTML5 Canvas',
+    files: [
+      {
+        name: 'SnakeGame.js',
+        language: 'javascript',
+        code: `import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Play, Pause, RotateCcw, Trophy, Gamepad2 } from 'lucide-react';
+
+const SnakeGame = () => {
+  const canvasRef = useRef(null);
+  const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
+  const [food, setFood] = useState({ x: 15, y: 15 });
+  const [direction, setDirection] = useState({ x: 0, y: 0 });
+  const [gameRunning, setGameRunning] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const [explosionParticles, setExplosionParticles] = useState([]);
+
+  const GRID_SIZE = 20;
+  const CANVAS_SIZE = 400;
+
+  // Create explosion particles
+  const createExplosion = useCallback((x, y) => {
+    const particles = [];
+    for (let i = 0; i < 20; i++) {
+      particles.push({
+        x: x * GRID_SIZE + GRID_SIZE / 2,
+        y: y * GRID_SIZE + GRID_SIZE / 2,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        life: 1,
+        decay: Math.random() * 0.02 + 0.01,
+        size: Math.random() * 4 + 2,
+        color: Math.random() > 0.5 ? '#ef4444' : '#f97316'
+      });
+    }
+    setExplosionParticles(particles);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Snake Game Implementation */}
+    </div>
+  );
+};
+
+export default SnakeGame;`
+      }
+    ]
+  },
+  'order-generator': {
+    title: 'AI Order Generator',
+    description: 'Intelligent retail order generation with budget optimization',
+    files: [
+      {
+        name: 'OrderGenerator.js',
+        language: 'javascript',
+        code: `import React, { useState, useCallback } from 'react';
+import { Upload, DollarSign, Filter, ShoppingCart } from 'lucide-react';
+
+const OrderGenerator = () => {
+  const [catalog, setCatalog] = useState([]);
+  const [generatedOrder, setGeneratedOrder] = useState([]);
+  const [orderParams, setOrderParams] = useState({
+    totalValue: '',
+    minPrice: '',
+    maxPrice: '',
+    maxItems: 50
+  });
+
+  const generateOrder = () => {
+    // Smart order generation algorithm
+    const order = [];
+    setGeneratedOrder(order);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Order Generator Implementation */}
+    </div>
+  );
+};
+
+export default OrderGenerator;`
+      }
+    ]
+  }
+};
+
+// Helper function to escape HTML
+const escapeHtml = (text) => {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+};
+
+// Function to open source code viewer - using string concatenation
+const openSourceCodeViewer = (projectSlug) => {
+  const sourceData = sourceCodeData[projectSlug];
+  
+  if (!sourceData) {
+    alert('Source code not available for this project');
+    return;
+  }
+
+  try {
+    const popup = window.open('about:blank', 'sourceCodeViewer', 'width=1200,height=800,scrollbars=yes,resizable=yes,toolbar=no,location=no,status=no');
+    
+    if (!popup) {
+      alert('Popup blocked! Please allow popups for this site and try again.');
+      return;
+    }
+
+    // Build HTML content using string concatenation
+    let htmlContent = '<!DOCTYPE html>\n';
+    htmlContent += '<html lang="en">\n';
+    htmlContent += '<head>\n';
+    htmlContent += '    <meta charset="UTF-8">\n';
+    htmlContent += '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n';
+    htmlContent += '    <title>' + sourceData.title + ' - Source Code</title>\n';
+    htmlContent += '    <style>\n';
+    htmlContent += '        body {\n';
+    htmlContent += '            margin: 0;\n';
+    htmlContent += '            padding: 20px;\n';
+    htmlContent += '            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);\n';
+    htmlContent += '            color: #ffffff;\n';
+    htmlContent += '            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;\n';
+    htmlContent += '            min-height: 100vh;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .header {\n';
+    htmlContent += '            text-align: center;\n';
+    htmlContent += '            margin-bottom: 2rem;\n';
+    htmlContent += '            padding: 2rem;\n';
+    htmlContent += '            background: rgba(55, 65, 81, 0.3);\n';
+    htmlContent += '            border-radius: 1rem;\n';
+    htmlContent += '            border: 1px solid rgba(75, 85, 99, 0.3);\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .header h1 {\n';
+    htmlContent += '            font-size: 2.5rem;\n';
+    htmlContent += '            font-weight: bold;\n';
+    htmlContent += '            background: linear-gradient(to right, #60a5fa, #a78bfa);\n';
+    htmlContent += '            -webkit-background-clip: text;\n';
+    htmlContent += '            -webkit-text-fill-color: transparent;\n';
+    htmlContent += '            margin: 0 0 1rem 0;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .header p {\n';
+    htmlContent += '            color: #d1d5db;\n';
+    htmlContent += '            font-size: 1.1rem;\n';
+    htmlContent += '            margin: 0;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .file-container {\n';
+    htmlContent += '            background: rgba(31, 41, 55, 0.8);\n';
+    htmlContent += '            border-radius: 1rem;\n';
+    htmlContent += '            border: 1px solid rgba(75, 85, 99, 0.3);\n';
+    htmlContent += '            overflow: hidden;\n';
+    htmlContent += '            margin-bottom: 2rem;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .file-header {\n';
+    htmlContent += '            padding: 1rem 1.5rem;\n';
+    htmlContent += '            background: rgba(55, 65, 81, 0.5);\n';
+    htmlContent += '            border-bottom: 1px solid rgba(75, 85, 99, 0.3);\n';
+    htmlContent += '            display: flex;\n';
+    htmlContent += '            align-items: center;\n';
+    htmlContent += '            justify-content: space-between;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .file-header h3 {\n';
+    htmlContent += '            margin: 0;\n';
+    htmlContent += '            color: #f3f4f6;\n';
+    htmlContent += '            font-size: 1.1rem;\n';
+    htmlContent += '            font-weight: 600;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .copy-btn {\n';
+    htmlContent += '            padding: 0.5rem 1rem;\n';
+    htmlContent += '            background: linear-gradient(to right, #10b981, #3b82f6);\n';
+    htmlContent += '            border: none;\n';
+    htmlContent += '            border-radius: 0.5rem;\n';
+    htmlContent += '            color: white;\n';
+    htmlContent += '            cursor: pointer;\n';
+    htmlContent += '            font-weight: 500;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .copy-btn:hover {\n';
+    htmlContent += '            transform: scale(1.05);\n';
+    htmlContent += '        }\n';
+    htmlContent += '        .code-content {\n';
+    htmlContent += '            padding: 1.5rem;\n';
+    htmlContent += '            overflow-x: auto;\n';
+    htmlContent += '            max-height: 60vh;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        pre {\n';
+    htmlContent += '            margin: 0;\n';
+    htmlContent += '            white-space: pre-wrap;\n';
+    htmlContent += '            word-wrap: break-word;\n';
+    htmlContent += '        }\n';
+    htmlContent += '        code {\n';
+    htmlContent += '            font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;\n';
+    htmlContent += '            font-size: 0.9rem;\n';
+    htmlContent += '            line-height: 1.6;\n';
+    htmlContent += '            color: #e5e7eb;\n';
+    htmlContent += '        }\n';
+    htmlContent += '    </style>\n';
+    htmlContent += '</head>\n';
+    htmlContent += '<body>\n';
+    htmlContent += '    <div class="header">\n';
+    htmlContent += '        <h1>' + sourceData.title + '</h1>\n';
+    htmlContent += '        <p>' + sourceData.description + '</p>\n';
+    htmlContent += '    </div>\n';
+    
+    // Add file containers
+    sourceData.files.forEach(file => {
+      htmlContent += '    <div class="file-container">\n';
+      htmlContent += '        <div class="file-header">\n';
+      htmlContent += '            <h3>' + file.name + '</h3>\n';
+      htmlContent += '            <button class="copy-btn" onclick="copyCode(\'' + file.name + '\')">\n';
+      htmlContent += '                Copy Code\n';
+      htmlContent += '            </button>\n';
+      htmlContent += '        </div>\n';
+      htmlContent += '        <div class="code-content">\n';
+      htmlContent += '            <pre><code id="code-' + file.name + '">' + escapeHtml(file.code) + '</code></pre>\n';
+      htmlContent += '        </div>\n';
+      htmlContent += '    </div>\n';
+    });
+    
+    htmlContent += '    <script>\n';
+    htmlContent += '        function copyCode(fileName) {\n';
+    htmlContent += '            const codeElement = document.getElementById("code-" + fileName);\n';
+    htmlContent += '            const text = codeElement.textContent;\n';
+    htmlContent += '            \n';
+    htmlContent += '            navigator.clipboard.writeText(text).then(() => {\n';
+    htmlContent += '                const btn = event.target;\n';
+    htmlContent += '                const originalText = btn.textContent;\n';
+    htmlContent += '                btn.textContent = "Copied!";\n';
+    htmlContent += '                btn.style.background = "linear-gradient(to right, #10b981, #059669)";\n';
+    htmlContent += '                \n';
+    htmlContent += '                setTimeout(() => {\n';
+    htmlContent += '                    btn.textContent = originalText;\n';
+    htmlContent += '                    btn.style.background = "linear-gradient(to right, #10b981, #3b82f6)";\n';
+    htmlContent += '                }, 2000);\n';
+    htmlContent += '            }).catch(err => {\n';
+    htmlContent += '                console.error("Failed to copy: ", err);\n';
+    htmlContent += '                alert("Failed to copy code to clipboard");\n';
+    htmlContent += '            });\n';
+    htmlContent += '        }\n';
+    htmlContent += '        \n';
+    htmlContent += '        document.addEventListener("keydown", (e) => {\n';
+    htmlContent += '            if (e.key === "Escape") {\n';
+    htmlContent += '                window.close();\n';
+    htmlContent += '            }\n';
+    htmlContent += '        });\n';
+    htmlContent += '    </script>\n';
+    htmlContent += '</body>\n';
+    htmlContent += '</html>';
+
+    popup.document.open();
+    popup.document.write(htmlContent);
+    popup.document.close();
+    
+  } catch (error) {
+    console.error('Error opening source code viewer:', error);
+    alert('Error opening source code viewer: ' + error.message);
+  }
+};
 
 const ProjectDetail = () => {
   const { projectSlug } = useParams();
