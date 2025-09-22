@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Smartphone, Monitor, Bot, Globe, Github, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import { Code, Smartphone, Monitor, Bot, Globe, ExternalLink, Mail, Linkedin } from 'lucide-react';
 import { projects, categories } from '../data/projects';
 
 // Source code data - moved directly into component
