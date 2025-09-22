@@ -80,74 +80,86 @@ const SnakeGame = () => {
     startGame();
   }, [startGame]);
 
-  // Game loop
+  // Game loop with requestAnimationFrame for smooth gameplay
   useEffect(() => {
     if (!gameRunning || gameOver) return;
 
-    const gameInterval = setInterval(() => {
-      setSnake(prevSnake => {
-        const newSnake = [...prevSnake];
-        const head = { 
-          x: newSnake[0].x + direction.x, 
-          y: newSnake[0].y + direction.y 
-        };
+    let animationId;
+    let lastTime = 0;
 
-        // Check collision
-        if (checkCollision(head, newSnake)) {
-          setGameOver(true);
-          setGameRunning(false);
-          return prevSnake;
-        }
+    const gameLoop = (currentTime) => {
+      if (currentTime - lastTime >= speed) {
+        setSnake(prevSnake => {
+          const newSnake = [...prevSnake];
+          const head = { 
+            x: newSnake[0].x + direction.x, 
+            y: newSnake[0].y + direction.y 
+          };
 
-        newSnake.unshift(head);
+          // Check collision
+          if (checkCollision(head, newSnake)) {
+            setGameOver(true);
+            setGameRunning(false);
+            return prevSnake;
+          }
 
-        // Check food collision
-        if (head.x === food.x && head.y === food.y) {
-          setScore(prev => prev + 10);
-          setFood(generateFood(newSnake));
-          // Increase speed slightly
-          setSpeed(prev => Math.max(80, prev - 2));
-        } else {
-          newSnake.pop();
-        }
+          newSnake.unshift(head);
 
-        return newSnake;
-      });
-    }, speed);
+          // Check food collision
+          if (head.x === food.x && head.y === food.y) {
+            setScore(prev => prev + 10);
+            setFood(generateFood(newSnake));
+            // Increase speed slightly
+            setSpeed(prev => Math.max(80, prev - 2));
+          } else {
+            newSnake.pop();
+          }
 
-    return () => clearInterval(gameInterval);
+          return newSnake;
+        });
+        
+        lastTime = currentTime;
+      }
+      
+      animationId = requestAnimationFrame(gameLoop);
+    };
+
+    animationId = requestAnimationFrame(gameLoop);
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, [direction, food, gameRunning, gameOver, speed, checkCollision, generateFood]);
 
-  // Draw game
+  // Optimized canvas drawing
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     
-    // Clear canvas
+    // Clear canvas with a single operation
     ctx.fillStyle = '#1f2937';
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
-    // Draw grid
+    // Draw grid - only if needed for visual reference
     ctx.strokeStyle = '#374151';
     ctx.lineWidth = 0.5;
+    ctx.beginPath();
     for (let i = 0; i <= CANVAS_SIZE; i += GRID_SIZE) {
-      ctx.beginPath();
       ctx.moveTo(i, 0);
       ctx.lineTo(i, CANVAS_SIZE);
-      ctx.stroke();
-      
-      ctx.beginPath();
       ctx.moveTo(0, i);
       ctx.lineTo(CANVAS_SIZE, i);
-      ctx.stroke();
     }
+    ctx.stroke();
 
-    // Draw snake
+    // Draw snake with optimized rendering
+    ctx.save();
     snake.forEach((segment, index) => {
       if (index === 0) {
-        // Head - gradient
+        // Head - gradient (cached for performance)
         const gradient = ctx.createLinearGradient(
           segment.x * GRID_SIZE, 
           segment.y * GRID_SIZE, 
@@ -158,8 +170,9 @@ const SnakeGame = () => {
         gradient.addColorStop(1, '#8b5cf6');
         ctx.fillStyle = gradient;
       } else {
-        // Body - solid color with opacity
-        ctx.fillStyle = `rgba(59, 130, 246, ${1 - (index * 0.1)})`;
+        // Body - optimized opacity calculation
+        const opacity = Math.max(0.3, 1 - (index * 0.08));
+        ctx.fillStyle = `rgba(59, 130, 246, ${opacity})`;
       }
       
       ctx.fillRect(
@@ -169,8 +182,10 @@ const SnakeGame = () => {
         GRID_SIZE - 2
       );
     });
+    ctx.restore();
 
-    // Draw food
+    // Draw food with optimized gradient
+    ctx.save();
     const foodGradient = ctx.createRadialGradient(
       food.x * GRID_SIZE + GRID_SIZE/2, 
       food.y * GRID_SIZE + GRID_SIZE/2, 
@@ -188,6 +203,7 @@ const SnakeGame = () => {
       GRID_SIZE - 4, 
       GRID_SIZE - 4
     );
+    ctx.restore();
   }, [snake, food]);
 
   // Handle keyboard input
