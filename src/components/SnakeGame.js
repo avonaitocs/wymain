@@ -18,18 +18,27 @@ const SnakeGame = () => {
   const GRID_SIZE = 20;
   const CANVAS_SIZE = 400;
 
-  // Generate random food position
+  // Generate random food position - fixed to avoid loop issues
   const generateFood = useCallback((snakeBody) => {
-    const getRandomPosition = () => ({
-      x: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE)),
-      y: Math.floor(Math.random() * (CANVAS_SIZE / GRID_SIZE))
-    });
+    const gridWidth = CANVAS_SIZE / GRID_SIZE;
+    const gridHeight = CANVAS_SIZE / GRID_SIZE;
     
-    let newFood = getRandomPosition();
-    while (snakeBody.some(segment => segment.x === newFood.x && segment.y === newFood.y)) {
-      newFood = getRandomPosition();
+    // Create array of all possible positions
+    const allPositions = [];
+    for (let x = 0; x < gridWidth; x++) {
+      for (let y = 0; y < gridHeight; y++) {
+        allPositions.push({ x, y });
+      }
     }
-    return newFood;
+    
+    // Filter out positions occupied by snake
+    const availablePositions = allPositions.filter(pos => 
+      !snakeBody.some(segment => segment.x === pos.x && segment.y === pos.y)
+    );
+    
+    // Return random available position
+    const randomIndex = Math.floor(Math.random() * availablePositions.length);
+    return availablePositions[randomIndex] || { x: 0, y: 0 };
   }, []);
 
   // Check collision
@@ -42,6 +51,34 @@ const SnakeGame = () => {
     // Self collision
     return snakeBody.some(segment => segment.x === head.x && segment.y === head.y);
   }, []);
+
+  // Game control functions
+  const startGame = useCallback(() => {
+    const initialSnake = [{ x: 10, y: 10 }];
+    setSnake(initialSnake);
+    setFood(generateFood(initialSnake));
+    setDirection({ x: 1, y: 0 });
+    setGameRunning(true);
+    setGameOver(false);
+    setScore(0);
+    setSpeed(150);
+  }, [generateFood]);
+
+  const pauseGame = useCallback(() => {
+    setGameRunning(false);
+  }, []);
+
+  const resumeGame = useCallback(() => {
+    if (!gameOver) {
+      setGameRunning(true);
+    }
+  }, [gameOver]);
+
+  const resetGame = useCallback(() => {
+    setGameRunning(false);
+    setGameOver(false);
+    startGame();
+  }, [startGame]);
 
   // Game loop
   useEffect(() => {
@@ -177,7 +214,11 @@ const SnakeGame = () => {
           break;
         case ' ':
           e.preventDefault();
-          toggleGame();
+          if (gameRunning) {
+            pauseGame();
+          } else {
+            resumeGame();
+          }
           break;
         default:
           // No action for other keys
@@ -187,31 +228,7 @@ const SnakeGame = () => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [gameRunning, gameOver]);
-
-  const startGame = () => {
-    setSnake([{ x: 10, y: 10 }]);
-    setFood(generateFood([{ x: 10, y: 10 }]));
-    setDirection({ x: 1, y: 0 });
-    setGameRunning(true);
-    setGameOver(false);
-    setScore(0);
-    setSpeed(150);
-  };
-
-  const toggleGame = () => {
-    if (gameOver) {
-      startGame();
-    } else {
-      setGameRunning(!gameRunning);
-    }
-  };
-
-  const resetGame = () => {
-    setGameRunning(false);
-    setGameOver(false);
-    startGame();
-  };
+  }, [gameRunning, gameOver, pauseGame, resumeGame]);
 
   // Update high score
   useEffect(() => {
@@ -240,6 +257,16 @@ const SnakeGame = () => {
       }
       return dir;
     });
+  };
+
+  const toggleGame = () => {
+    if (gameOver) {
+      startGame();
+    } else if (gameRunning) {
+      pauseGame();
+    } else {
+      resumeGame();
+    }
   };
 
   return (
