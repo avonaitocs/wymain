@@ -108,7 +108,7 @@ const escapeHtml = (text) => {
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 };
 
-// Function to open source code viewer - using string concatenation
+// Function to open source code viewer - fixed version
 const openSourceCodeViewer = (projectSlug) => {
   const sourceData = sourceCodeData[projectSlug];
   
@@ -125,147 +125,156 @@ const openSourceCodeViewer = (projectSlug) => {
       return;
     }
 
-    // Build HTML content using string concatenation
-    let htmlContent = '<!DOCTYPE html>\n';
-    htmlContent += '<html lang="en">\n';
-    htmlContent += '<head>\n';
-    htmlContent += '    <meta charset="UTF-8">\n';
-    htmlContent += '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n';
-    htmlContent += '    <title>' + sourceData.title + ' - Source Code</title>\n';
-    htmlContent += '    <style>\n';
-    htmlContent += '        body {\n';
-    htmlContent += '            margin: 0;\n';
-    htmlContent += '            padding: 20px;\n';
-    htmlContent += '            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);\n';
-    htmlContent += '            color: #ffffff;\n';
-    htmlContent += '            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;\n';
-    htmlContent += '            min-height: 100vh;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .header {\n';
-    htmlContent += '            text-align: center;\n';
-    htmlContent += '            margin-bottom: 2rem;\n';
-    htmlContent += '            padding: 2rem;\n';
-    htmlContent += '            background: rgba(55, 65, 81, 0.3);\n';
-    htmlContent += '            border-radius: 1rem;\n';
-    htmlContent += '            border: 1px solid rgba(75, 85, 99, 0.3);\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .header h1 {\n';
-    htmlContent += '            font-size: 2.5rem;\n';
-    htmlContent += '            font-weight: bold;\n';
-    htmlContent += '            background: linear-gradient(to right, #60a5fa, #a78bfa);\n';
-    htmlContent += '            -webkit-background-clip: text;\n';
-    htmlContent += '            -webkit-text-fill-color: transparent;\n';
-    htmlContent += '            margin: 0 0 1rem 0;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .header p {\n';
-    htmlContent += '            color: #d1d5db;\n';
-    htmlContent += '            font-size: 1.1rem;\n';
-    htmlContent += '            margin: 0;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .file-container {\n';
-    htmlContent += '            background: rgba(31, 41, 55, 0.8);\n';
-    htmlContent += '            border-radius: 1rem;\n';
-    htmlContent += '            border: 1px solid rgba(75, 85, 99, 0.3);\n';
-    htmlContent += '            overflow: hidden;\n';
-    htmlContent += '            margin-bottom: 2rem;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .file-header {\n';
-    htmlContent += '            padding: 1rem 1.5rem;\n';
-    htmlContent += '            background: rgba(55, 65, 81, 0.5);\n';
-    htmlContent += '            border-bottom: 1px solid rgba(75, 85, 99, 0.3);\n';
-    htmlContent += '            display: flex;\n';
-    htmlContent += '            align-items: center;\n';
-    htmlContent += '            justify-content: space-between;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .file-header h3 {\n';
-    htmlContent += '            margin: 0;\n';
-    htmlContent += '            color: #f3f4f6;\n';
-    htmlContent += '            font-size: 1.1rem;\n';
-    htmlContent += '            font-weight: 600;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .copy-btn {\n';
-    htmlContent += '            padding: 0.5rem 1rem;\n';
-    htmlContent += '            background: linear-gradient(to right, #10b981, #3b82f6);\n';
-    htmlContent += '            border: none;\n';
-    htmlContent += '            border-radius: 0.5rem;\n';
-    htmlContent += '            color: white;\n';
-    htmlContent += '            cursor: pointer;\n';
-    htmlContent += '            font-weight: 500;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .copy-btn:hover {\n';
-    htmlContent += '            transform: scale(1.05);\n';
-    htmlContent += '        }\n';
-    htmlContent += '        .code-content {\n';
-    htmlContent += '            padding: 1.5rem;\n';
-    htmlContent += '            overflow-x: auto;\n';
-    htmlContent += '            max-height: 60vh;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        pre {\n';
-    htmlContent += '            margin: 0;\n';
-    htmlContent += '            white-space: pre-wrap;\n';
-    htmlContent += '            word-wrap: break-word;\n';
-    htmlContent += '        }\n';
-    htmlContent += '        code {\n';
-    htmlContent += '            font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;\n';
-    htmlContent += '            font-size: 0.9rem;\n';
-    htmlContent += '            line-height: 1.6;\n';
-    htmlContent += '            color: #e5e7eb;\n';
-    htmlContent += '        }\n';
-    htmlContent += '    </style>\n';
-    htmlContent += '</head>\n';
-    htmlContent += '<body>\n';
-    htmlContent += '    <div class="header">\n';
-    htmlContent += '        <h1>' + sourceData.title + '</h1>\n';
-    htmlContent += '        <p>' + sourceData.description + '</p>\n';
-    htmlContent += '    </div>\n';
-    
+    // Create the HTML content using proper string concatenation
+    const htmlParts = [
+      '<!DOCTYPE html>',
+      '<html lang="en">',
+      '<head>',
+      '    <meta charset="UTF-8">',
+      '    <meta name="viewport" content="width=device-width, initial-scale=1.0">',
+      '    <title>' + sourceData.title + ' - Source Code</title>',
+      '    <style>',
+      '        body {',
+      '            margin: 0;',
+      '            padding: 20px;',
+      '            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);',
+      '            color: #ffffff;',
+      '            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;',
+      '            min-height: 100vh;',
+      '        }',
+      '        .header {',
+      '            text-align: center;',
+      '            margin-bottom: 2rem;',
+      '            padding: 2rem;',
+      '            background: rgba(55, 65, 81, 0.3);',
+      '            border-radius: 1rem;',
+      '            border: 1px solid rgba(75, 85, 99, 0.3);',
+      '        }',
+      '        .header h1 {',
+      '            font-size: 2.5rem;',
+      '            font-weight: bold;',
+      '            background: linear-gradient(to right, #60a5fa, #a78bfa);',
+      '            -webkit-background-clip: text;',
+      '            -webkit-text-fill-color: transparent;',
+      '            margin: 0 0 1rem 0;',
+      '        }',
+      '        .header p {',
+      '            color: #d1d5db;',
+      '            font-size: 1.1rem;',
+      '            margin: 0;',
+      '        }',
+      '        .file-container {',
+      '            background: rgba(31, 41, 55, 0.8);',
+      '            border-radius: 1rem;',
+      '            border: 1px solid rgba(75, 85, 99, 0.3);',
+      '            overflow: hidden;',
+      '            margin-bottom: 2rem;',
+      '        }',
+      '        .file-header {',
+      '            padding: 1rem 1.5rem;',
+      '            background: rgba(55, 65, 81, 0.5);',
+      '            border-bottom: 1px solid rgba(75, 85, 99, 0.3);',
+      '            display: flex;',
+      '            align-items: center;',
+      '            justify-content: space-between;',
+      '        }',
+      '        .file-header h3 {',
+      '            margin: 0;',
+      '            color: #f3f4f6;',
+      '            font-size: 1.1rem;',
+      '            font-weight: 600;',
+      '        }',
+      '        .copy-btn {',
+      '            padding: 0.5rem 1rem;',
+      '            background: linear-gradient(to right, #10b981, #3b82f6);',
+      '            border: none;',
+      '            border-radius: 0.5rem;',
+      '            color: white;',
+      '            cursor: pointer;',
+      '            font-weight: 500;',
+      '        }',
+      '        .copy-btn:hover {',
+      '            transform: scale(1.05);',
+      '        }',
+      '        .code-content {',
+      '            padding: 1.5rem;',
+      '            overflow-x: auto;',
+      '            max-height: 60vh;',
+      '            background: #1e293b;',
+      '        }',
+      '        pre {',
+      '            margin: 0;',
+      '            white-space: pre-wrap;',
+      '            word-wrap: break-word;',
+      '        }',
+      '        code {',
+      '            font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;',
+      '            font-size: 0.9rem;',
+      '            line-height: 1.6;',
+      '            color: #e2e8f0;',
+      '        }',
+      '    </style>',
+      '</head>',
+      '<body>',
+      '    <div class="header">',
+      '        <h1>' + sourceData.title + '</h1>',
+      '        <p>' + sourceData.description + '</p>',
+      '    </div>'
+    ];
+
     // Add file containers
     sourceData.files.forEach(file => {
-      htmlContent += '    <div class="file-container">\n';
-      htmlContent += '        <div class="file-header">\n';
-      htmlContent += '            <h3>' + file.name + '</h3>\n';
-      htmlContent += '            <button class="copy-btn" onclick="copyCode(\'' + file.name + '\')">\n';
-      htmlContent += '                Copy Code\n';
-      htmlContent += '            </button>\n';
-      htmlContent += '        </div>\n';
-      htmlContent += '        <div class="code-content">\n';
-      htmlContent += '            <pre><code id="code-' + file.name + '">' + escapeHtml(file.code) + '</code></pre>\n';
-      htmlContent += '        </div>\n';
-      htmlContent += '    </div>\n';
+      htmlParts.push(
+        '    <div class="file-container">',
+        '        <div class="file-header">',
+        '            <h3>' + file.name + '</h3>',
+        '            <button class="copy-btn" onclick="copyCode(\'' + file.name + '\')">',
+        '                Copy Code',
+        '            </button>',
+        '        </div>',
+        '        <div class="code-content">',
+        '            <pre><code id="code-' + file.name + '">' + escapeHtml(file.code) + '</code></pre>',
+        '        </div>',
+        '    </div>'
+      );
     });
-    
-    htmlContent += '    <script>\n';
-    htmlContent += '        function copyCode(fileName) {\n';
-    htmlContent += '            const codeElement = document.getElementById("code-" + fileName);\n';
-    htmlContent += '            const text = codeElement.textContent;\n';
-    htmlContent += '            \n';
-    htmlContent += '            navigator.clipboard.writeText(text).then(() => {\n';
-    htmlContent += '                const btn = event.target;\n';
-    htmlContent += '                const originalText = btn.textContent;\n';
-    htmlContent += '                btn.textContent = "Copied!";\n';
-    htmlContent += '                btn.style.background = "linear-gradient(to right, #10b981, #059669)";\n';
-    htmlContent += '                \n';
-    htmlContent += '                setTimeout(() => {\n';
-    htmlContent += '                    btn.textContent = originalText;\n';
-    htmlContent += '                    btn.style.background = "linear-gradient(to right, #10b981, #3b82f6)";\n';
-    htmlContent += '                }, 2000);\n';
-    htmlContent += '            }).catch(err => {\n';
-    htmlContent += '                console.error("Failed to copy: ", err);\n';
-    htmlContent += '                alert("Failed to copy code to clipboard");\n';
-    htmlContent += '            });\n';
-    htmlContent += '        }\n';
-    htmlContent += '        \n';
-    htmlContent += '        document.addEventListener("keydown", (e) => {\n';
-    htmlContent += '            if (e.key === "Escape") {\n';
-    htmlContent += '                window.close();\n';
-    htmlContent += '            }\n';
-    htmlContent += '        });\n';
-    htmlContent += '    </script>\n';
-    htmlContent += '</body>\n';
-    htmlContent += '</html>';
 
+    // Add the script section
+    htmlParts.push(
+      '    <script>',
+      '        function copyCode(fileName) {',
+      '            const codeElement = document.getElementById("code-" + fileName);',
+      '            const text = codeElement.textContent;',
+      '            ',
+      '            navigator.clipboard.writeText(text).then(() => {',
+      '                const btn = event.target;',
+      '                const originalText = btn.textContent;',
+      '                btn.textContent = "Copied!";',
+      '                btn.style.background = "linear-gradient(to right, #10b981, #059669)";',
+      '                ',
+      '                setTimeout(() => {',
+      '                    btn.textContent = originalText;',
+      '                    btn.style.background = "linear-gradient(to right, #10b981, #3b82f6)";',
+      '                }, 2000);',
+      '            }).catch(err => {',
+      '                console.error("Failed to copy: ", err);',
+      '                alert("Failed to copy code to clipboard");',
+      '            });',
+      '        }',
+      '        ',
+      '        document.addEventListener("keydown", (e) => {',
+      '            if (e.key === "Escape") {',
+      '                window.close();',
+      '            }',
+      '        });',
+      '    </script>',
+      '</body>',
+      '</html>'
+    );
+
+    // Write the complete HTML
     popup.document.open();
-    popup.document.write(htmlContent);
+    popup.document.write(htmlParts.join('\n'));
     popup.document.close();
     
   } catch (error) {
