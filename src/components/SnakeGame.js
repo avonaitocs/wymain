@@ -664,6 +664,209 @@ const SnakeGame = () => {
               </div>
             </div>
           </div>
+
+          {/* Development Journey Section */}
+          <div className="mt-16 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/30">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Development Journey
+                </span>
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Technical evolution and iterative improvements in building this Snake game
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Phase 1 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-blue-400 font-bold text-sm">1</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-400">Core Implementation</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• React component structure setup</li>
+                  <li>• HTML5 Canvas integration</li>
+                  <li>• Basic game loop with setInterval</li>
+                  <li>• Snake movement and food mechanics</li>
+                  <li>• Collision detection algorithms</li>
+                </ul>
+              </div>
+
+              {/* Phase 2 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-purple-400 font-bold text-sm">2</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-purple-400">ESLint Compliance</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• Fixed "function in loop" errors</li>
+                  <li>• Resolved useEffect dependencies</li>
+                  <li>• Added missing switch default cases</li>
+                  <li>• Implemented useCallback optimization</li>
+                  <li>• CI/CD deployment compatibility</li>
+                </ul>
+              </div>
+
+              {/* Phase 3 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-green-400 font-bold text-sm">3</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-400">Performance Optimization</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• Replaced setInterval with requestAnimationFrame</li>
+                  <li>• Optimized canvas rendering pipeline</li>
+                  <li>• Reduced redundant drawing operations</li>
+                  <li>• Implemented efficient collision checking</li>
+                  <li>• Smooth 60fps gameplay achieved</li>
+                </ul>
+              </div>
+
+              {/* Phase 4 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-orange-400 font-bold text-sm">4</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-orange-400">Visual Enhancement</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• Enlarged snake head design</li>
+                  <li>• Directional eye implementation</li>
+                  <li>• Rounded corner styling</li>
+                  <li>• Dynamic gradient effects</li>
+                  <li>• Portfolio theme integration</li>
+                </ul>
+              </div>
+
+              {/* Phase 5 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-pink-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-pink-400 font-bold text-sm">5</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-pink-400">Particle System</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• Explosion particle mechanics</li>
+                  <li>• Physics simulation (gravity, velocity)</li>
+                  <li>• Particle lifecycle management</li>
+                  <li>• Alpha blending and fading</li>
+                  <li>• Collision-triggered effects</li>
+                </ul>
+              </div>
+
+              {/* Phase 6 */}
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-cyan-400 font-bold text-sm">6</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-cyan-400">User Experience</h3>
+                </div>
+                <ul className="space-y-2 text-gray-300 text-sm">
+                  <li>• Mobile touch controls</li>
+                  <li>• Game state overlays</li>
+                  <li>• High score persistence</li>
+                  <li>• Responsive sidebar stats</li>
+                  <li>• Intuitive control scheme</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Technical Challenges Solved */}
+            <div className="mt-16 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/30">
+              <h3 className="text-2xl font-bold mb-6 text-center">Technical Challenges Solved</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-lg font-semibold text-red-400 mb-3">Performance Issues</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <div>
+                      <span className="font-medium">Problem:</span> Snake movement was laggy and inconsistent with setInterval
+                    </div>
+                    <div>
+                      <span className="font-medium">Solution:</span> Implemented requestAnimationFrame with timestamp-based timing for smooth 60fps gameplay
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-yellow-400 mb-3">ESLint Compliance</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <div>
+                      <span className="font-medium">Problem:</span> CI builds failing due to unsafe loop references and missing dependencies
+                    </div>
+                    <div>
+                      <span className="font-medium">Solution:</span> Refactored food generation logic and properly managed useEffect dependencies
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-blue-400 mb-3">Canvas Optimization</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <div>
+                      <span className="font-medium">Problem:</span> Redundant canvas operations causing performance drops
+                    </div>
+                    <div>
+                      <span className="font-medium">Solution:</span> Batched drawing operations and optimized rendering pipeline
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-green-400 mb-3">Visual Effects</h4>
+                  <div className="space-y-3 text-sm text-gray-300">
+                    <div>
+                      <span className="font-medium">Problem:</span> Static snake appearance lacking personality and impact on death
+                    </div>
+                    <div>
+                      <span className="font-medium">Solution:</span> Dynamic directional eyes and particle explosion system
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Technical Highlights */}
+            <div className="mt-12 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl p-8 border border-blue-500/20">
+              <h3 className="text-xl font-bold mb-4 text-center">Technical Highlights</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div>
+                  <h4 className="font-semibold text-blue-400 mb-2">Game Engine Architecture</h4>
+                  <p className="text-gray-300">Custom game loop using requestAnimationFrame with deltatime calculations for consistent gameplay across different devices and frame rates.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-purple-400 mb-2">Canvas Performance</h4>
+                  <p className="text-gray-300">Optimized rendering pipeline with batched operations, context state management, and efficient particle system for smooth visual effects.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-green-400 mb-2">React Integration</h4>
+                  <p className="text-gray-300">Seamless integration of imperative canvas API with React's declarative paradigm using refs and carefully managed side effects.</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-orange-400 mb-2">Mobile Responsive</h4>
+                  <p className="text-gray-300">Touch controls for mobile devices while maintaining keyboard support, with adaptive UI that works across all screen sizes.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Development Insights */}
+            <div className="mt-12 text-center">
+              <h3 className="text-xl font-bold mb-4 text-gray-300">Development Insights</h3>
+              <p className="text-gray-400 max-w-3xl mx-auto text-sm leading-relaxed">
+                This Snake game demonstrates the intersection of game development and modern web technologies. 
+                Key learnings include the importance of frame-rate independent timing, proper React effect management, 
+                and the balance between visual polish and performance optimization. The iterative development process 
+                showcased problem-solving skills from initial implementation through deployment challenges to user experience enhancements.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
