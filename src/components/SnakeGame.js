@@ -272,7 +272,7 @@ const SnakeGame = () => {
       GRID_SIZE - 4
     );
     ctx.restore();
-  }, [snake, food]);
+  }, [snake, food, direction]);
 
   // Handle keyboard input
   useEffect(() => {
