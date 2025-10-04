@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Smartphone, Monitor, Bot, Globe, ExternalLink, Mail, Linkedin } from 'lucide-react';
+import { Code, Smartphone, Monitor, Bot, Globe, ExternalLink, Mail, Linkedin, Zap, Clock, TrendingUp } from 'lucide-react';
 import { projects, categories } from '../data/projects';
 
 const Home = () => {
@@ -41,29 +41,34 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section - Redesigned */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-3xl"></div>
         <div className="relative container mx-auto px-6 py-20">
-          <div className="text-center mb-16">
+          <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="animate-on-scroll" id="hero-title">
-              <h1 className={`text-6xl md:text-8xl font-bold mb-6 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  WYM
-                </span>
-                <span className="text-yellow-400 drop-shadow-lg animate-pulse">ai</span>
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  N
+              <h1 className={`text-5xl md:text-7xl font-bold mb-6 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                I Turn AI Into Real Business Results
+                <span className="block text-3xl md:text-4xl mt-4 text-gray-300">
+                  (So You Don't Have To Learn It)
                 </span>
               </h1>
-              <p className={`text-xl md:text-2xl text-gray-300 mb-8 transition-all duration-1000 delay-300 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                ai Projects
+              <p className={`text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                Most business owners know AI matters but don't have time to figure it out. I build the websites, apps, and automations that save you time and money.
               </p>
-              <div className={`flex flex-wrap justify-center gap-4 text-sm md:text-base transition-all duration-1000 delay-500 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <span className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30">Web Development</span>
-                <span className="px-4 py-2 bg-purple-500/20 rounded-full border border-purple-500/30">iOS & macOS</span>
-                <span className="px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30">Python & ML</span>
-                <span className="px-4 py-2 bg-orange-500/20 rounded-full border border-orange-500/30">AI Bots</span>
+              <div className={`flex flex-wrap justify-center gap-4 text-base transition-all duration-1000 delay-500 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <span className="px-4 py-2 bg-green-500/20 rounded-full border border-green-500/30 flex items-center gap-2">
+                  <Clock size={18} />
+                  Save Time
+                </span>
+                <span className="px-4 py-2 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center gap-2">
+                  <TrendingUp size={18} />
+                  Cut Costs
+                </span>
+                <span className="px-4 py-2 bg-purple-500/20 rounded-full border border-purple-500/30 flex items-center gap-2">
+                  <Zap size={18} />
+                  Modern Solutions
+                </span>
               </div>
             </div>
           </div>
@@ -75,14 +80,46 @@ const Home = () => {
         <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-green-500/10 rounded-full blur-lg animate-pulse delay-2000"></div>
       </div>
 
-      {/* Portfolio Section */}
+      {/* How I Work Section - NEW */}
+      <div className="container mx-auto px-6 py-16 border-b border-gray-800">
+        <div className="animate-on-scroll max-w-4xl mx-auto" id="how-it-works">
+          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 transition-all duration-1000 ${isVisible['how-it-works'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            How I Work
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
+                <span className="text-2xl font-bold">1</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Listen & Understand</h3>
+              <p className="text-gray-400">I learn about your business challenges and goals. No tech jargon required.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-500/30">
+                <span className="text-2xl font-bold">2</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Build with AI</h3>
+              <p className="text-gray-400">I leverage AI tools to rapidly create solutions that would traditionally take months.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
+                <span className="text-2xl font-bold">3</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Deliver Results</h3>
+              <p className="text-gray-400">You get working solutions that save time and reduce labor costs, without the learning curve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Portfolio Section - Moved up */}
       <div className="container mx-auto px-6 py-20">
         <div className="animate-on-scroll mb-16" id="portfolio-header">
           <h2 className={`text-4xl md:text-5xl font-bold text-center mb-4 transition-all duration-1000 ${isVisible['portfolio-header'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Featured Projects
+            Projects Built with AI
           </h2>
           <p className={`text-gray-400 text-center max-w-2xl mx-auto transition-all duration-1000 delay-200 ${isVisible['portfolio-header'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Projects completed with AI
+            Real examples of what AI-powered development can achieve
           </p>
         </div>
 
@@ -143,7 +180,7 @@ const Home = () => {
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
+                  {project.tech.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 text-xs bg-gray-700/50 rounded-md text-gray-300"
@@ -151,6 +188,11 @@ const Home = () => {
                       {tech}
                     </span>
                   ))}
+                  {project.tech.length > 3 && (
+                    <span className="px-2 py-1 text-xs bg-gray-700/50 rounded-md text-gray-300">
+                      +{project.tech.length - 3}
+                    </span>
+                  )}
                 </div>
                 
                 <div className="flex gap-3 relative z-20">
@@ -177,30 +219,37 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Contact Section */}
-      <div className="animate-on-scroll py-20 border-t border-gray-800" id="contact">
+      {/* Contact Section - Simplified CTA */}
+      <div className="animate-on-scroll py-20 border-t border-gray-800 bg-gradient-to-b from-transparent to-gray-900/50" id="contact">
         <div className={`container mx-auto px-6 text-center transition-all duration-1000 ${isVisible['contact'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl font-bold mb-6">Let's Build Something Amazing</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's Talk About Your Project</h2>
+          <p className="text-gray-300 text-lg mb-4 max-w-2xl mx-auto">
+            Not sure if AI can help your business?
+          </p>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Ready to discuss your next AI project? I'm always interested in collaborating on innovative solutions.
+            I offer free 15-minute chats to explore ideas and see if we're a good fit.
           </p>
           
-          <div className="flex justify-center gap-6 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
             <a
               href="mailto:mgwyman@gmail.com"
-              className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25"
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25 text-lg font-semibold"
             >
               <Mail size={20} />
-              Get In Touch
+              Start a Conversation
             </a>
             <a
               href="https://linkedin.com"
-              className="flex items-center gap-2 px-8 py-4 border border-gray-700 rounded-full hover:border-gray-500 transition-all duration-300 hover:scale-105 bg-gray-800/50 backdrop-blur-sm"
+              className="flex items-center justify-center gap-2 px-8 py-4 border border-gray-700 rounded-full hover:border-gray-500 transition-all duration-300 hover:scale-105 bg-gray-800/50 backdrop-blur-sm"
             >
               <Linkedin size={20} />
-              LinkedIn
+              Connect on LinkedIn
             </a>
           </div>
+          
+          <p className="text-sm text-gray-500">
+            mgwyman@gmail.com • Based in Montreal
+          </p>
         </div>
       </div>
 
