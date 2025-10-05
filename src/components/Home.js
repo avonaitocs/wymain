@@ -49,7 +49,7 @@ const Home = () => {
             <div className="animate-on-scroll" id="hero-title">
               <h1 className={`text-6xl md:text-8xl font-bold mb-4 transition-all duration-1000 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  WYMAN
+                  wyman
                 </span>
                 <span className="text-yellow-400 drop-shadow-lg">.ai</span>
                 <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -57,7 +57,7 @@ const Home = () => {
                 </span>
               </h1>
               <p className={`text-xl text-gray-400 transition-all duration-1000 delay-200 ${isVisible['hero-title'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                Projects built with AI
+                ai Projects
               </p>
             </div>
           </div>
