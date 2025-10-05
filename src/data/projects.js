@@ -1,135 +1,63 @@
 export const projects = [
+  // Working demos first
   {
-    
-      id: 1,
-      title: "AI Order generator",
-      slug: "order-generator", 
-      category: "productivity",
-      description: "AI-powered retail order generation tool with smart budget optimization",
-      longDescription: "An intelligent order generation platform that helps retailers create optimized orders based on budget constraints and product parameters. Upload your catalog and let AI generate the perfect order mix.",
-      tech: ["React", "SheetJS", "AI Algorithm", "PDF Export"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-      images: [
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
-      ],
-      github: "source-code",
-      demo: "/order-generator", // This will link directly to the tool
-      challenges: "Creating an intelligent algorithm that optimizes product selection within budget constraints",
-      outcome: "Successfully generates optimized orders with Excel/PDF export capabilities",
-      features: [
-        "Smart catalog upload (CSV/JSON)",
-        "Budget-based optimization",
-        "Price range filtering", 
-        "Excel & PDF export",
-        "Real-time order generation"
-      ]
-    },
-  {
-    id: 2,
-    title: "AI Assistant iOS App",
-    slug: "ai-assistant-ios",
-    category: "ios",
-    description: "Native iOS app with voice recognition and intelligent task automation",
-    longDescription: "A comprehensive iOS application that brings AI assistance to your pocket. Featuring advanced voice recognition, natural language processing, and seamless integration with iOS ecosystem. The app can automate various tasks and provide intelligent suggestions based on user behavior.",
-    tech: ["Swift", "Core ML", "Speech Framework", "CloudKit"],
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    id: 1,
+    title: "AI Order Generator",
+    slug: "order-generator", 
+    category: "productivity",
+    description: "Generates optimized retail orders within budget constraints. Upload your catalog, set a budget, and get a smart product mix instantly.",
+    longDescription: "An intelligent order generation platform that helps retailers create optimized orders based on budget constraints and product parameters. Upload your catalog and let AI generate the perfect order mix.",
+    tech: ["React", "SheetJS", "AI Algorithm", "PDF Export"],
+    image: "/screenshots/order-generator.png", // REPLACE WITH ACTUAL SCREENSHOT
     images: [
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+      "/screenshots/order-generator.png"
     ],
-    github: "#",
-    demo: "#",
-    challenges: "Optimizing Core ML models for on-device processing while maintaining accuracy",
-    outcome: "App Store release with 4.8-star rating and 10,000+ downloads in first month",
+    github: "source-code",
+    demo: "/order-generator",
+    challenges: "Creating an intelligent algorithm that optimizes product selection within budget constraints",
+    outcome: "Successfully generates optimized orders with Excel/PDF export capabilities",
     features: [
-      "Voice command recognition",
-      "Smart task automation",
-      "Widget support",
-      "Offline functionality",
-      "Integration with iOS shortcuts"
+      "Smart catalog upload (CSV/JSON)",
+      "Budget-based optimization",
+      "Price range filtering", 
+      "Excel & PDF export",
+      "Real-time order generation"
     ]
   },
   {
-    id: 3,
-    title: "Data Analysis Bot",
-    slug: "data-analysis-bot",
-    category: "bots",
-    description: "Automated bot that processes large datasets and generates insights using machine learning",
-    longDescription: "An intelligent Discord bot that can analyze CSV files, generate statistical insights, and create visualizations on-demand. Users can upload datasets and receive comprehensive analysis reports with charts, trends, and actionable insights.",
-    tech: ["Python", "Pandas", "Scikit-learn", "Discord.py"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    id: 7,
+    title: "Snake Game",
+    slug: "snake-game",
+    category: "fun",
+    description: "Classic Snake game built with React and Canvas. Shows rapid prototyping with modern web tech and game development concepts.",
+    longDescription: "A modern take on the classic Snake game built with React and HTML5 Canvas. Features smooth gameplay, progressive difficulty, local high score tracking, and mobile-friendly controls. Demonstrates game development concepts, canvas manipulation, and responsive design.",
+    tech: ["React", "HTML5 Canvas", "Local Storage", "CSS Animations"],
+    image: "/screenshots/snake-game.png", // REPLACE WITH ACTUAL SCREENSHOT
     images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+      "/screenshots/snake-game.png"
     ],
     github: "#",
-    demo: "#",
-    challenges: "Processing large datasets efficiently while maintaining responsive bot interactions",
-    outcome: "Successfully analyzing 50+ datasets daily across multiple Discord servers",
+    demo: "/snake-game",
+    challenges: "Implementing smooth canvas-based game loop with collision detection and responsive controls",
+    outcome: "Fully playable game with modern UI and mobile support, showcasing game development skills",
     features: [
-      "Automated data processing",
-      "Statistical analysis generation",
-      "Data visualization creation",
-      "Natural language queries",
-      "Export to multiple formats"
+      "Canvas-based smooth gameplay",
+      "Progressive speed increase",
+      "Collision detection system",
+      "Mobile touch controls",
+      "High score persistence",
+      "Modern gradient styling",
+      "Responsive design",
+      "Keyboard and touch input"
     ]
   },
-  {
-    id: 4,
-    title: "Smart Desktop Assistant",
-    slug: "smart-desktop-assistant",
-    category: "macos",
-    description: "macOS application with AI-powered file organization and workflow automation",
-    longDescription: "A powerful macOS application that intelligently organizes your files and automates repetitive workflows. Using machine learning algorithms, it learns from user behavior to suggest optimal file organization and can automatically sort documents based on content analysis.",
-    tech: ["Swift", "AppKit", "Create ML", "Automator"],
-    image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
-    ],
-    github: "#",
-    demo: "#",
-    challenges: "Balancing automation with user control while ensuring file safety",
-    outcome: "Improved user productivity by 40% with intelligent file organization",
-    features: [
-      "AI-powered file organization",
-      "Workflow automation",
-      "Smart folder suggestions",
-      "Duplicate file detection",
-      "Batch processing capabilities"
-    ]
-  },
-  {
-    id: 5,
-    title: "ML Pipeline Manager",
-    slug: "ml-pipeline-manager",
-    category: "python",
-    description: "Python framework for managing machine learning pipelines with automated model training",
-    longDescription: "A comprehensive Python framework that streamlines the machine learning lifecycle from data preprocessing to model deployment. Features automated hyperparameter tuning, experiment tracking, and seamless integration with popular ML libraries.",
-    tech: ["Python", "TensorFlow", "FastAPI", "Docker"],
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
-    ],
-    github: "#",
-    demo: "#",
-    challenges: "Creating a flexible framework that works with various ML algorithms and datasets",
-    outcome: "Reduced model development time by 60% with automated pipeline management",
-    features: [
-      "Automated model training",
-      "Experiment tracking",
-      "Hyperparameter optimization",
-      "Model versioning",
-      "API deployment automation"
-    ]
-  },
+  // Other projects
   {
     id: 6,
     title: "AI-Powered E-commerce",
     slug: "ai-powered-ecommerce",
     category: "websites",
-    description: "E-commerce platform with AI recommendations and intelligent search functionality",
+    description: "E-commerce platform with personalized product recommendations and intelligent search that learns from customer behavior.",
     longDescription: "A modern e-commerce platform that leverages AI to enhance user experience through personalized product recommendations, intelligent search capabilities, and dynamic pricing optimization. Built with scalability and performance in mind.",
     tech: ["Next.js", "TailwindCSS", "Python", "PostgreSQL"],
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
@@ -150,31 +78,103 @@ export const projects = [
     ]
   },
   {
-    id: 7,
-    title: "Snake Game",
-    slug: "snake-game",
-    category: "fun",
-    description: "Classic Snake game reimagined with modern web technologies and sleek design",
-    longDescription: "A modern take on the classic Snake game built with React and HTML5 Canvas. Features smooth gameplay, progressive difficulty, local high score tracking, and mobile-friendly controls. Demonstrates game development concepts, canvas manipulation, and responsive design.",
-    tech: ["React", "HTML5 Canvas", "Local Storage", "CSS Animations"],
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    id: 3,
+    title: "Data Analysis Bot",
+    slug: "data-analysis-bot",
+    category: "bots",
+    description: "Automated Discord bot that analyzes CSV files and generates statistical insights with charts on-demand.",
+    longDescription: "An intelligent Discord bot that can analyze CSV files, generate statistical insights, and create visualizations on-demand. Users can upload datasets and receive comprehensive analysis reports with charts, trends, and actionable insights.",
+    tech: ["Python", "Pandas", "Scikit-learn", "Discord.py"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
     images: [
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
     ],
     github: "#",
-    demo: "/snake-game",
-    challenges: "Implementing smooth canvas-based game loop with collision detection and responsive controls",
-    outcome: "Fully playable game with modern UI and mobile support, showcasing game development skills",
+    demo: "#",
+    challenges: "Processing large datasets efficiently while maintaining responsive bot interactions",
+    outcome: "Successfully analyzing 50+ datasets daily across multiple Discord servers",
     features: [
-      "Canvas-based smooth gameplay",
-      "Progressive speed increase",
-      "Collision detection system",
-      "Mobile touch controls",
-      "High score persistence",
-      "Modern gradient styling",
-      "Responsive design",
-      "Keyboard and touch input"
+      "Automated data processing",
+      "Statistical analysis generation",
+      "Data visualization creation",
+      "Natural language queries",
+      "Export to multiple formats"
+    ]
+  },
+  {
+    id: 5,
+    title: "ML Pipeline Manager",
+    slug: "ml-pipeline-manager",
+    category: "python",
+    description: "Python framework that automates the machine learning workflow from data preprocessing to model deployment.",
+    longDescription: "A comprehensive Python framework that streamlines the machine learning lifecycle from data preprocessing to model deployment. Features automated hyperparameter tuning, experiment tracking, and seamless integration with popular ML libraries.",
+    tech: ["Python", "TensorFlow", "FastAPI", "Docker"],
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+    ],
+    github: "#",
+    demo: "#",
+    challenges: "Creating a flexible framework that works with various ML algorithms and datasets",
+    outcome: "Reduced model development time by 60% with automated pipeline management",
+    features: [
+      "Automated model training",
+      "Experiment tracking",
+      "Hyperparameter optimization",
+      "Model versioning",
+      "API deployment automation"
+    ]
+  },
+  {
+    id: 2,
+    title: "AI Assistant iOS App",
+    slug: "ai-assistant-ios",
+    category: "ios",
+    description: "Native iOS app with voice recognition and intelligent task automation integrated with the iOS ecosystem.",
+    longDescription: "A comprehensive iOS application that brings AI assistance to your pocket. Featuring advanced voice recognition, natural language processing, and seamless integration with iOS ecosystem. The app can automate various tasks and provide intelligent suggestions based on user behavior.",
+    tech: ["Swift", "Core ML", "Speech Framework", "CloudKit"],
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+    ],
+    github: "#",
+    demo: "#",
+    challenges: "Optimizing Core ML models for on-device processing while maintaining accuracy",
+    outcome: "App Store release with 4.8-star rating and 10,000+ downloads in first month",
+    features: [
+      "Voice command recognition",
+      "Smart task automation",
+      "Widget support",
+      "Offline functionality",
+      "Integration with iOS shortcuts"
+    ]
+  },
+  {
+    id: 4,
+    title: "Smart Desktop Assistant",
+    slug: "smart-desktop-assistant",
+    category: "macos",
+    description: "macOS app that intelligently organizes files and automates repetitive workflows using machine learning.",
+    longDescription: "A powerful macOS application that intelligently organizes your files and automates repetitive workflows. Using machine learning algorithms, it learns from user behavior to suggest optimal file organization and can automatically sort documents based on content analysis.",
+    tech: ["Swift", "AppKit", "Create ML", "Automator"],
+    image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+    ],
+    github: "#",
+    demo: "#",
+    challenges: "Balancing automation with user control while ensuring file safety",
+    outcome: "Improved user productivity by 40% with intelligent file organization",
+    features: [
+      "AI-powered file organization",
+      "Workflow automation",
+      "Smart folder suggestions",
+      "Duplicate file detection",
+      "Batch processing capabilities"
     ]
   }
 ];
