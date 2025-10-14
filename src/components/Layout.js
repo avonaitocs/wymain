@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
       {/* Footer */}
       <div className="border-t border-gray-800 py-8">
         <div className="container mx-auto px-6 text-center text-gray-500">
-          <p>&copy; 2025 WYMaiN</p>
+          <p>&copy; 2025 WYMAN</p>
         </div>
       </div>
     </div>
