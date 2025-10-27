@@ -153,7 +153,7 @@ export const projects = [
     ]
   },
   {
-    {
+    
     id: 2,
     title: "Net Worth Tracker",
     slug: "net-worth-tracker",
