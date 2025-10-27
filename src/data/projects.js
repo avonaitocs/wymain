@@ -153,30 +153,32 @@ export const projects = [
     ]
   },
   {
-    id: 4,
-    title: "Smart Desktop Assistant",
-    slug: "smart-desktop-assistant",
+    {
+    id: 2,
+    title: "Net Worth Tracker",
+    slug: "net-worth-tracker",
     category: "macos",
-    description: "macOS app that intelligently organizes files and automates repetitive workflows using machine learning.",
-    longDescription: "A powerful macOS application that intelligently organizes your files and automates repetitive workflows. Using machine learning algorithms, it learns from user behavior to suggest optimal file organization and can automatically sort documents based on content analysis.",
-    tech: ["Swift", "AppKit", "Create ML", "Automator"],
-    image: "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=400&h=250&fit=crop&crop=entropy&auto=format&q=80",
+    description: "A macOS app to track and visualize net worth with detailed financial summaries and trends.",
+    longDescription: "A sleek macOS application designed to help users monitor their net worth over time. Features include real-time net worth calculation, 12-month trend visualization, monthly financial summaries, and a breakdown of assets and liabilities. Built with a user-friendly interface and modern design principles.",
+    tech: ["React", "JavaScript", "CSS", "macOS", "Chart Visualization"],
+    image: "/screenshots/net-worth-tracker.png", // REPLACE WITH ACTUAL SCREENSHOT
     images: [
-      "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80",
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=500&fit=crop&crop=entropy&auto=format&q=80"
+      "/screenshots/net-worth-tracker.png"
     ],
     github: "#",
-    demo: "#",
-    challenges: "Balancing automation with user control while ensuring file safety",
-    outcome: "Improved user productivity by 40% with intelligent file organization",
+    demo: "/net-worth-tracker",
+    challenges: "Integrating dynamic data updates and creating an intuitive chart-based trend visualization",
+    outcome: "A fully functional net worth tracking tool with an engaging UI, offering users clear financial insights",
     features: [
-      "AI-powered file organization",
-      "Workflow automation",
-      "Smart folder suggestions",
-      "Duplicate file detection",
-      "Batch processing capabilities"
+      "Real-time net worth calculation",
+      "12-month net worth trend chart",
+      "Monthly financial summary",
+      "Assets and liabilities breakdown",
+      "User-friendly macOS interface",
+      "Responsive design elements",
+      "Data entry and update functionality"
     ]
-  }
+}
 ];
 
 export const categories = [
